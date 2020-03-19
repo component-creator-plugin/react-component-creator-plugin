@@ -17,7 +17,7 @@ public class ComponentCreatorDialog extends JDialog {
 
 
     private final String componentTemplateFile = "templates/component/component.tsx.mustache";
-    private final String sassTemplateFile = "templates/component/component.scss.mustache";
+    private final String sassTemplateFile = "templates/component/_component.scss.mustache";
     private final String specTemplateFile = "templates/component/component.spec.tsx.mustache";
     private final String storyTemplateFile = "templates/component/component.story.tsx.mustache";
 

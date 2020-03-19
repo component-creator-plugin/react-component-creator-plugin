@@ -15,7 +15,6 @@ public class ComponentCreator extends AbstractCreator {
     protected String[] filesToInclude;
     protected Map<String, Object> templateModel;
 
-
     public ComponentCreator(VirtualFile directory, String componentName, Map<String, Object> templateModel, String[] files) {
         this.directory = directory;
         this.componentName = componentName;

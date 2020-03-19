@@ -14,9 +14,11 @@ public class ComponentCreatorDialog extends JDialog {
     private JCheckBox storybookCheckBox;
     private JCheckBox unitTestCheckBox;
     private JCheckBox SCSSCheckBox;
+    private JCheckBox SFCCheckBox;
 
 
     private final String componentTemplateFile = "templates/component/component.tsx.mustache";
+    private final String sfcComponentTemplateFile = "templates/component/sfc/component.tsx.mustache";
     private final String sassTemplateFile = "templates/component/_component.scss.mustache";
     private final String specTemplateFile = "templates/component/component.spec.tsx.mustache";
     private final String storyTemplateFile = "templates/component/component.story.tsx.mustache";
@@ -69,7 +71,12 @@ public class ComponentCreatorDialog extends JDialog {
 
     public String[] getFiles() {
         ArrayList<String> files = new ArrayList<String>();
-        files.add(componentTemplateFile);
+
+        if (SFCCheckBox.isSelected()) {
+            files.add(sfcComponentTemplateFile);
+        } else {
+            files.add(componentTemplateFile);
+        }
 
         if (storybookCheckBox.isSelected()) {
             files.add(storyTemplateFile);

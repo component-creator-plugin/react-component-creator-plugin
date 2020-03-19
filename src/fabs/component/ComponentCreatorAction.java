@@ -20,7 +20,6 @@ public class ComponentCreatorAction extends AbstractCreatorAction {
         anActionEvent.getPresentation().setEnabledAndVisible(project != null && navigatable != null);
     }
 
-
     @Override
     public void actionPerformed(AnActionEvent e) {
         ComponentCreatorDialog dialog = new ComponentCreatorDialog();

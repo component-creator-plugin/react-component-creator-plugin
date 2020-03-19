@@ -11,6 +11,13 @@
          on how to target different products -->
     <!-- uncomment to enable plugin in all products -->
     <depends>com.intellij.modules.lang</depends>
+    <description>
+        <![CDATA[
+            <h1><a href="#react-component-creator" id="react-component-creator">react-component-creator</a></h1>
+            <p>An Brainstorm Plugin to create a new react functional component with all additional files like
+            SCSS, Spec, Storybook</p>
+        ]]>
+    </description>
 
 
     <extensions defaultExtensionNs="com.intellij">

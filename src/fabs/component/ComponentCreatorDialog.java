@@ -14,12 +14,13 @@ public class ComponentCreatorDialog extends JDialog {
     private JCheckBox storybookCheckBox;
     private JCheckBox unitTestCheckBox;
     private JCheckBox SCSSCheckBox;
-
+    private JCheckBox markdownCheckBox;
 
     private final String componentTemplateFile = "templates/component/component.tsx.mustache";
     private final String sassTemplateFile = "templates/component/_component.scss.mustache";
     private final String specTemplateFile = "templates/component/component.spec.tsx.mustache";
     private final String storyTemplateFile = "templates/component/component.story.tsx.mustache";
+    private final String markdownTemplateFile = "templates/component/component.md.mustache";
 
     private boolean hasCanceled = false;
 
@@ -73,6 +74,10 @@ public class ComponentCreatorDialog extends JDialog {
 
         if (storybookCheckBox.isSelected()) {
             files.add(storyTemplateFile);
+        }
+
+        if (markdownCheckBox.isSelected()) {
+            files.add(markdownTemplateFile);
         }
 
         if (unitTestCheckBox.isSelected()) {

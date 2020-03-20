@@ -10,5 +10,6 @@ Search for `React Component Creator` in the plugins settings. Or download the pl
 
 # Development
 Follow the [Setup Instructions](./doc/DEVELOPMENT.md)
+
 # Icons
 Icons provided by https://www.iconfinder.com/justicon via https://www.iconfinder.com

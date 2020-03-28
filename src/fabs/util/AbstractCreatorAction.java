@@ -7,8 +7,6 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.pom.Navigatable;
-import fabs.component.ComponentCreator;
-import fabs.component.ComponentCreatorDialog;
 
 import java.awt.*;
 import java.util.Map;
@@ -16,6 +14,8 @@ import java.util.Map;
 public abstract class AbstractCreatorAction extends AnAction {
 
     protected abstract AbstractCreator createCreator(VirtualFile directory, String componentName, Map<String, Object> templateModel, String[] files);
+
+    protected abstract AbstractDialog createDialog();
 
     @Override
     public void update(AnActionEvent anActionEvent) {
@@ -32,9 +32,9 @@ public abstract class AbstractCreatorAction extends AnAction {
         return file.getParent();
     }
 
-     @Override
+    @Override
     public void actionPerformed(AnActionEvent e) {
-        ComponentCreatorDialog dialog = new ComponentCreatorDialog();
+        AbstractDialog dialog = createDialog();
         VirtualFile selectedLocation = e.getData(CommonDataKeys.VIRTUAL_FILE);
         VirtualFile targetLocation = getLocation(selectedLocation);
 
@@ -58,5 +58,4 @@ public abstract class AbstractCreatorAction extends AnAction {
                 this.createCreator(targetLocation, componentName, dialog.getTemplateVars(), dialog.getFiles())
         );
     }
-
 }

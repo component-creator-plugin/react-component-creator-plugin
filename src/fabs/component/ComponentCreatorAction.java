@@ -11,6 +11,5 @@ public class ComponentCreatorAction extends AbstractCreatorAction {
     @Override
     protected AbstractCreator createCreator(VirtualFile directory, String componentName, Map<String, Object> templateModel, String[] files) {
         return new ComponentCreator(directory, componentName, templateModel, files);
-
     }
 }

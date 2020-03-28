@@ -2,8 +2,10 @@ package fabs.component;
 
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.samskivert.mustache.Template;
 import fabs.util.AbstractCreator;
 import fabs.util.FileUtils;
+import fabs.util.StringFormatter;
 import fabs.util.TemplateRenderer;
 
 import java.io.IOException;
@@ -31,36 +33,15 @@ public class ComponentCreator extends AbstractCreator {
         VirtualFile componentDirectory = directory.createChildDirectory(directory, componentName);
 
         FileUtils utils = new FileUtils();
-        TemplateRenderer renderer = new TemplateRenderer();
 
-        templateModel.put("componentCamelcaseName", toCamelCase(componentName));
+        templateModel.put("componentCamelcaseName", StringFormatter.toCamelCase(componentName));
 
         for (int i = 0; i < filesToInclude.length; i++) {
             String file = filesToInclude[i];
-            utils.writeFile(renderer.render(file, templateModel), componentDirectory.createChildData(componentDirectory, transformTemplateName(file, componentName)));
+            utils.writeFile(
+                TemplateRenderer.render(file, templateModel),
+                componentDirectory.createChildData(componentDirectory, TemplateRenderer.transformTemplateName(file, componentName)
+            ));
         }
     }
-
-    private String toCamelCase(String input) {
-        StringBuffer sb = new StringBuffer();
-        for (String s : input.split("-")) {
-            sb.append(Character.toUpperCase(s.charAt(0)));
-            if (s.length() > 1) {
-                sb.append(s.substring(1, s.length()).toLowerCase());
-            }
-        }
-        return sb.toString();
-
-    }
-
-    private String transformTemplateName(String templateString, String componentName) {
-        String[] parts = templateString.split("/");
-        String fileName = parts[parts.length - 1];
-        return fileName
-                .replace(".mustache", "")
-                .replace("component", componentName)
-                ;
-    }
-
-
 }

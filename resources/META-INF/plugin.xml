@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.faebeee.reactcomponentcreator</id>
     <name>React Component Creator</name>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
     <vendor email="faebeee@gmail.com" url="http://fabs.io">Fabio Gianini</vendor>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
@@ -14,10 +14,22 @@
     <description>
         <![CDATA[
             <h1><a href="#react-component-creator" id="react-component-creator">react-component-creator</a></h1>
-            <p>An Brainstorm Plugin to create a new react functional component with all additional files like
-            SCSS, Spec, Storybook</p>
+            <ul>
+              <li>An Brainstorm Plugin to create a new react functional component with all additional files like
+                SCSS, Spec, Storybook.</li>
+              <li>Add Redux reducer module with actions, mutations, state and types</li>
+            </ul>
         ]]>
     </description>
+
+    <change-notes>
+        <![CDATA[
+            <ul>
+              <li>v0.2.0 Add <code>Add Redux Reducer</code> Action</li>
+              <li>v0.1.0 Add <code>Add React Component</code> Action</li>
+            </ul>
+        ]]>
+    </change-notes>
 
 
     <extensions defaultExtensionNs="com.intellij">
@@ -25,13 +37,23 @@
     </extensions>
 
     <actions>
-        <!-- Add your actions here -->
-        <action id="ReactComponent.ComponentCreatorAction"
-                class="fabs.component.ComponentCreatorAction"
-                icon="/icons/component.png"
-                text="React Component"
-                description="Create React component">
+        <group description="React" id="React">
+            <separator/>
+            <action id="ReactComponent.ComponentCreatorAction"
+                    class="fabs.component.ComponentCreatorAction"
+                    icon="/icons/component.png"
+                    text="React component"
+                    description="create new react component">
+            </action>
+
+            <action id="ReactComponent.ReducerCreatorAction"
+                    class="fabs.reducer.ReducerCreatorAction"
+                    icon="/icons/store.png"
+                    text="Redux reducer"
+                    description="create new redux reducer">
+            </action>
+            <separator/>
             <add-to-group group-id="NewGroup" anchor="first"/>
-        </action>
+        </group>
     </actions>
 </idea-plugin>

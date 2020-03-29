@@ -1,7 +1,7 @@
 package fabs.component;
 
-
 import fabs.util.AbstractDialog;
+import fabs.util.StringFormatter;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -12,7 +12,6 @@ import java.util.Map;
 public class ComponentCreatorDialog extends AbstractDialog {
     private JPanel contentPane;
     private JButton buttonOK;
-    private JButton buttonCancel;
     private JTextField componentNameTextField;
     private JCheckBox storybookCheckBox;
     private JCheckBox unitTestCheckBox;
@@ -25,15 +24,12 @@ public class ComponentCreatorDialog extends AbstractDialog {
     private final String storyTemplateFile = "templates/component/component.story.tsx.mustache";
     private final String markdownTemplateFile = "templates/component/component.md.mustache";
 
-
     public ComponentCreatorDialog() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
 
         buttonOK.addActionListener(e -> onOK());
-
-        buttonCancel.addActionListener(e -> onCancel());
 
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -48,8 +44,12 @@ public class ComponentCreatorDialog extends AbstractDialog {
     }
 
     public Map<String, Object> getTemplateVars() {
-        Map<String, Object> templateModel = new HashMap<String, Object>();
-        templateModel.put("componentName", componentNameTextField.getText());
+        Map<String, Object> templateModel = new HashMap<>();
+        String componentName = componentNameTextField.getText();
+
+        templateModel.put("componentName", componentName);
+        templateModel.put("componentCamelcaseName", StringFormatter.toCamelCase(componentName));
+
         return templateModel;
     }
 
@@ -57,8 +57,13 @@ public class ComponentCreatorDialog extends AbstractDialog {
         return componentNameTextField.getText();
     }
 
-    public String[] getFiles() {
-        ArrayList<String> files = new ArrayList<String>();
+    @Override
+    public String getDirectoryName() {
+        return componentNameTextField.getText();
+    }
+
+    public ArrayList<String> getFiles() {
+        ArrayList<String> files = new ArrayList<>();
         files.add(componentTemplateFile);
 
         if (storybookCheckBox.isSelected()) {
@@ -77,6 +82,6 @@ public class ComponentCreatorDialog extends AbstractDialog {
             files.add(sassTemplateFile);
         }
 
-        return files.toArray(new String[files.size()]);
+        return files;
     }
 }

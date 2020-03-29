@@ -1,15 +1,17 @@
 package fabs.component;
 
+import fabs.util.AbstractDialog;
+import fabs.util.StringFormatter;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ComponentCreatorDialog extends JDialog {
+public class ComponentCreatorDialog extends AbstractDialog {
     private JPanel contentPane;
     private JButton buttonOK;
-    private JButton buttonCancel;
     private JTextField componentNameTextField;
     private JCheckBox storybookCheckBox;
     private JCheckBox unitTestCheckBox;
@@ -22,24 +24,12 @@ public class ComponentCreatorDialog extends JDialog {
     private final String storyTemplateFile = "templates/component/component.story.tsx.mustache";
     private final String markdownTemplateFile = "templates/component/component.md.mustache";
 
-    private boolean hasCanceled = false;
-
     public ComponentCreatorDialog() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
 
-        buttonOK.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
-
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
+        buttonOK.addActionListener(e -> onOK());
 
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -50,17 +40,16 @@ public class ComponentCreatorDialog extends JDialog {
         });
 
         // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-
+        contentPane.registerKeyboardAction(e -> onCancel(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
     public Map<String, Object> getTemplateVars() {
-        Map<String, Object> templateModel = new HashMap<String, Object>();
-        templateModel.put("componentName", componentNameTextField.getText());
+        Map<String, Object> templateModel = new HashMap<>();
+        String componentName = componentNameTextField.getText();
+
+        templateModel.put("componentName", componentName);
+        templateModel.put("componentCamelcaseName", StringFormatter.toCamelCase(componentName));
+
         return templateModel;
     }
 
@@ -68,8 +57,13 @@ public class ComponentCreatorDialog extends JDialog {
         return componentNameTextField.getText();
     }
 
-    public String[] getFiles() {
-        ArrayList<String> files = new ArrayList<String>();
+    @Override
+    public String getDirectoryName() {
+        return componentNameTextField.getText();
+    }
+
+    public ArrayList<String> getFiles() {
+        ArrayList<String> files = new ArrayList<>();
         files.add(componentTemplateFile);
 
         if (storybookCheckBox.isSelected()) {
@@ -88,21 +82,6 @@ public class ComponentCreatorDialog extends JDialog {
             files.add(sassTemplateFile);
         }
 
-        return files.toArray(new String[files.size()]);
+        return files;
     }
-
-    public boolean isCanceled() {
-        return hasCanceled;
-    }
-
-    private void onOK() {
-        hasCanceled = false;
-        dispose();
-    }
-
-    private void onCancel() {
-        hasCanceled = true;
-        dispose();
-    }
-
 }

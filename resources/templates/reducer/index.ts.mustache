@@ -1,0 +1,16 @@
+import { {{ moduleNamePascalCase }}Actions, {{ stateName }} } from './types';
+import { {{ mutationType }} } from './action-types';
+
+export const initialState: {{ stateName }} = {
+};
+
+export default function {{ moduleName }}Reducer(state = initialState, action: {{ moduleNamePascalCase }}Actions): {{ stateName }} {
+    switch (action.type) {
+        case {{ mutationType }}:
+            return {
+                ...state,
+            };
+        default:
+            return state;
+    }
+}

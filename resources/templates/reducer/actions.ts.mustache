@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
-import { {{ mutationType }} } from './action-types';
+import { {{ actionTypesEnumName }} } from './action-types';
 import { {{ actionTypeName }} } from './types';
 
-export const {{ actionFunctionName }} = () => async (dispatch: Dispatch<{{ actionTypeName }}>) => {
+export const {{ actionFunctionName }} = () => async (dispatch: Dispatch<{{ actionTypesEnumName }}.{{ actionTypeName }}>) => {
     dispatch({ type: {{ mutationType }} , data });
 };

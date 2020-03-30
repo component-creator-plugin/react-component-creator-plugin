@@ -1,2 +1,3 @@
+- v0.2.1 Export enum for action types
 - v0.2.0 Add `Add Redux Reducer` Action
 - v0.1.0 Add `Add React Component` Action

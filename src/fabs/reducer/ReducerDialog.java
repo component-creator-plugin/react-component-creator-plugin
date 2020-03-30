@@ -60,13 +60,15 @@ public class ReducerDialog extends AbstractDialog {
     public Map<String, Object> getTemplateVars() {
         Map<String, Object> templateModel = new HashMap<>();
         String actionFunctionName = actionNameTextField.getText();
+        String moduleName = moduleNameTextField.getText();
 
         templateModel.put("actionFunctionName", actionFunctionName);
-        templateModel.put("moduleName", StringFormatter.toCamelCase(moduleNameTextField.getText()));
-        templateModel.put("moduleNamePascalCase", StringFormatter.toCamelCase(moduleNameTextField.getText()));
-        templateModel.put("stateName", StringFormatter.toCamelCase(moduleNameTextField.getText()) + "State");
+        templateModel.put("moduleName", moduleName);
+        templateModel.put("moduleNamePascalCase", StringFormatter.toCamelCase(moduleName));
+        templateModel.put("stateName", StringFormatter.toCamelCase(moduleName) + "State");
         templateModel.put("mutationType", mutationNametextField.getText());
-        templateModel.put("actionTypeName", StringFormatter.capitalizeFirst(actionFunctionName)+"Action");
+        templateModel.put("actionTypeName", StringFormatter.capitalizeFirst(actionFunctionName) + "Action");
+        templateModel.put("actionTypesEnumName", StringFormatter.toDashCase(moduleName).toUpperCase() + "_ACTIONS");
 
         return templateModel;
     }

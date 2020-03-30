@@ -4,7 +4,8 @@ SCSS, Spec, Storybook.
 - Add Redux reducer module with actions, mutations, state and types
 
 
-![Create component](./doc/create-component.gif "")
+![Create component](./doc/create_component.gif "")
+![Create Reducer](./doc/create_reducer.gif "")
 
 # Install
 Search for `React Component Creator` in the plugins settings. Or download the plugin from the [release site](https://github.com/faebeee/react-component-creator-plugin/releases)

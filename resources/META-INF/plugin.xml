@@ -35,7 +35,29 @@
 
 
     <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
+        <projectConfigurable
+                instance="fabs.reducer.ui.ReducerSettings"
+                id="redux.settings"
+                displayName="React Component Creator"
+                parentId="redux.settings"
+                nonDefaultProject="true"/>
+
+        <projectConfigurable
+                instance="fabs.reducer.ui.ReducerSettings"
+                id="redux.settings.redux"
+                displayName="Redux"
+                parentId="redux.settings"
+                nonDefaultProject="true"/>
+
+        <projectConfigurable
+                instance="fabs.reducer.ui.ReducerSettings"
+                id="redux.settings.component"
+                displayName="Component"
+                parentId="redux.settings"
+                nonDefaultProject="true"/>
+
+        <projectService serviceInterface="fabs.reducer.state.ReducerSettingsState"
+                        serviceImplementation="fabs.reducer.state.ReducerSettingsState"/>
     </extensions>
 
     <actions>

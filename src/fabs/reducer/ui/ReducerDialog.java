@@ -1,5 +1,7 @@
-package fabs.reducer;
+package fabs.reducer.ui;
 
+import com.intellij.openapi.project.Project;
+import fabs.reducer.data.ReducerCreateOptions;
 import fabs.util.AbstractDialog;
 import fabs.util.StringFormatter;
 
@@ -18,42 +20,28 @@ public class ReducerDialog extends AbstractDialog {
     private JTextField actionNameTextField;
     private JButton createButton;
     private JTextField mutationNametextField;
+    private ReducerCreateOptions options;
 
-
-    private final String actionTemplateFile = "templates/reducer/actions.ts.mustache";
-    private final String indexTemplateFile = "templates/reducer/index.ts.mustache";
-    private final String typesTemplateFile = "templates/reducer/types.ts.mustache";
-    private final String actionTypesTemplateFile = "templates/reducer/action-types.ts.mustache";
-
-    public ReducerDialog() {
+    public ReducerDialog(ReducerCreateOptions options) {
+        this.options = options;
         setContentPane(contentPanel);
         setModal(true);
         getRootPane().setDefaultButton(createButton);
 
         createButton.addActionListener(e -> onOK());
 
-        // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 onCancel();
             }
         });
-
-        // call onCancel() on ESCAPE
         contentPanel.registerKeyboardAction(e -> onCancel(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
     @Override
-    public ArrayList<String> getFiles() {
-        ArrayList<String> files = new ArrayList<>();
-
-        files.add(actionTemplateFile);
-        files.add(indexTemplateFile);
-        files.add(typesTemplateFile);
-        files.add(actionTypesTemplateFile);
-
-        return files;
+    public ArrayList<String> getFiles(Project project) {
+        return options.getFiles();
     }
 
     @Override
@@ -64,7 +52,7 @@ public class ReducerDialog extends AbstractDialog {
 
         templateModel.put("actionFunctionName", actionFunctionName);
         templateModel.put("moduleName", moduleName);
-        templateModel.put("moduleNamePascalCase", StringFormatter.toCamelCase(moduleName));
+         templateModel.put("moduleNamePascalCase", StringFormatter.toCamelCase(moduleName));
         templateModel.put("stateName", StringFormatter.toCamelCase(moduleName) + "State");
         templateModel.put("mutationType", mutationNametextField.getText());
         templateModel.put("actionTypeName", StringFormatter.capitalizeFirst(actionFunctionName) + "Action");

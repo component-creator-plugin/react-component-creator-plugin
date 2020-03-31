@@ -1,5 +1,6 @@
 package fabs.component;
 
+import com.intellij.openapi.project.Project;
 import fabs.util.AbstractDialog;
 import fabs.util.StringFormatter;
 
@@ -62,7 +63,7 @@ public class ComponentCreatorDialog extends AbstractDialog {
         return componentNameTextField.getText();
     }
 
-    public ArrayList<String> getFiles() {
+    public ArrayList<String> getFiles(Project project) {
         ArrayList<String> files = new ArrayList<>();
         files.add(componentTemplateFile);
 

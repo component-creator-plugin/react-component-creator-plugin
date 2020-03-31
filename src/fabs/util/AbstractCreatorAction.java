@@ -9,10 +9,11 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.pom.Navigatable;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class AbstractCreatorAction extends AnAction {
 
-    protected abstract AbstractDialog createDialog();
+    protected abstract AbstractDialog createDialog(Project project);
 
     @Override
     public void update(AnActionEvent anActionEvent) {
@@ -31,7 +32,7 @@ public abstract class AbstractCreatorAction extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent e) {
-        AbstractDialog dialog = this.createDialog();
+        AbstractDialog dialog = this.createDialog(e.getProject());
         VirtualFile selectedLocation = e.getData(CommonDataKeys.VIRTUAL_FILE);
         VirtualFile targetLocation = getLocation(selectedLocation);
 
@@ -49,8 +50,9 @@ public abstract class AbstractCreatorAction extends AnAction {
             return;
         }
 
+        ArrayList<String> files = dialog.getFiles(e.getProject());
         ApplicationManager.getApplication().runWriteAction(
-                new Creator(targetLocation, dialog.getDirectoryName(), dialog.getComponentName(), dialog.getTemplateVars(), dialog.getFileList())
+                new Creator(targetLocation, dialog.getDirectoryName(), dialog.getComponentName(), dialog.getTemplateVars(), files.toArray(new String[files.size()]))
         );
     }
 }

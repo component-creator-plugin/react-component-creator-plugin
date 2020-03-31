@@ -1,24 +1,22 @@
 package fabs.util;
 
+import com.intellij.openapi.project.Project;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Map;
 
 public abstract class AbstractDialog extends JDialog {
 
-    protected abstract ArrayList<String> getFiles();
+    public abstract ArrayList<String> getFiles(Project project);
 
     public abstract Map<String, Object> getTemplateVars();
 
     public abstract String getComponentName();
+
     public abstract String getDirectoryName();
 
     protected boolean hasCanceled = false;
-
-    public String[] getFileList() {
-        ArrayList<String> files = getFiles();
-        return files.toArray(new String[files.size()]);
-    }
 
     public boolean isCanceled() {
         return hasCanceled;

@@ -2,8 +2,7 @@ package fabs.util;
 
 import com.intellij.openapi.vfs.VirtualFile;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Scanner;
 
 public class FileUtils {
@@ -14,12 +13,12 @@ public class FileUtils {
      * @param fileName
      * @return
      */
-    public String getContent(String fileName) {
+    public String getContent(String fileName) throws FileNotFoundException {
         StringBuilder result = new StringBuilder("");
         ClassLoader classLoader = getClass().getClassLoader();
         InputStream resourceStream = classLoader.getResourceAsStream(fileName);
-
-        Scanner scanner = new Scanner(resourceStream);
+        InputStreamReader i = new FileReader(fileName);
+        Scanner scanner = new Scanner(i);
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();

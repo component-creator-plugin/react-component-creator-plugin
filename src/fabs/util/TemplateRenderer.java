@@ -3,6 +3,7 @@ package fabs.util;
 import com.samskivert.mustache.Mustache;
 import com.samskivert.mustache.Template;
 
+import java.io.FileNotFoundException;
 import java.util.Map;
 
 public class TemplateRenderer {
@@ -12,7 +13,7 @@ public class TemplateRenderer {
      * @param context
      * @return
      */
-    public static String render(String file, Map<String, Object> context) {
+    public static String render(String file, Map<String, Object> context) throws FileNotFoundException {
         FileUtils utils = new FileUtils();
         Template tmpl = Mustache.compiler().compile(utils.getContent(file));
         return tmpl.execute(context);

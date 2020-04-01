@@ -10,7 +10,7 @@ public abstract class AbstractDialog extends JDialog {
 
     public abstract ArrayList<String> getFiles(Project project);
 
-    public abstract Map<String, Object> getTemplateVars();
+    public abstract VariableHolder getVariables();
 
     public abstract String getComponentName();
 

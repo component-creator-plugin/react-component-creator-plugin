@@ -1,4 +1,4 @@
-package fabs.reducer.ui;
+package fabs.reducer.ui.settings;
 
 import fabs.reducer.data.ReducerCreateOptions;
 
@@ -33,6 +33,8 @@ public class ReducerSettingsUI {
         actionsTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, actionsTemplateInput));
         indexTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, indexTemplateInput));
         typesTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, typesTemplateInput));
+
+//        variableTable.setModel(new VariableListModel());
     }
 
     /**
@@ -65,4 +67,5 @@ public class ReducerSettingsUI {
     public JComponent getMainPanel() {
         return mainPanel;
     }
+
 }

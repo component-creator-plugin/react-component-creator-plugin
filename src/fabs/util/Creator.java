@@ -11,13 +11,13 @@ public class Creator implements Runnable {
     protected String componentName;
     protected String directoryName;
     protected String[] files;
-    protected Map<String, Object> templateModel;
+    protected VariableHolder variables;
 
-    public Creator(VirtualFile directory, String directoryName,String componentName, Map<String, Object> templateModel, String[] files) {
+    public Creator(VirtualFile directory, String directoryName, String componentName, VariableHolder variables, String[] files) {
         this.directory = directory;
         this.componentName = componentName;
         this.directoryName = directoryName;
-        this.templateModel = templateModel;
+        this.variables = variables;
         this.files = files;
     }
 
@@ -34,10 +34,11 @@ public class Creator implements Runnable {
         FileUtils utils = new FileUtils();
         TemplateRenderer renderer = new TemplateRenderer();
         VirtualFile componentDirectory = directory.createChildDirectory(directory, directoryName);
+        Map<String, String> variablemap = variables.toMap();
 
         for (int i = 0; i < files.length; i++) {
             String file = files[i];
-            utils.writeFile(renderer.render(file, templateModel), componentDirectory.createChildData(componentDirectory, StringFormatter.transformTemplateName(file, componentName)));
+            utils.writeFile(renderer.render(file, variablemap), componentDirectory.createChildData(componentDirectory, TemplateRenderer.transformTemplateName(file, variablemap)));
         }
     }
 

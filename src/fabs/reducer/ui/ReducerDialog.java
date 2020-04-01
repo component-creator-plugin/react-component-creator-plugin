@@ -2,16 +2,15 @@ package fabs.reducer.ui;
 
 import com.intellij.openapi.project.Project;
 import fabs.reducer.data.ReducerCreateOptions;
+import fabs.reducer.data.ReducerVariables;
 import fabs.util.AbstractDialog;
-import fabs.util.StringFormatter;
+import fabs.util.VariableHolder;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ReducerDialog extends AbstractDialog {
 
@@ -45,20 +44,11 @@ public class ReducerDialog extends AbstractDialog {
     }
 
     @Override
-    public Map<String, Object> getTemplateVars() {
-        Map<String, Object> templateModel = new HashMap<>();
+    public VariableHolder getVariables() {
         String actionFunctionName = actionNameTextField.getText();
         String moduleName = moduleNameTextField.getText();
 
-        templateModel.put("actionFunctionName", actionFunctionName);
-        templateModel.put("moduleName", moduleName);
-         templateModel.put("moduleNamePascalCase", StringFormatter.toCamelCase(moduleName));
-        templateModel.put("stateName", StringFormatter.toCamelCase(moduleName) + "State");
-        templateModel.put("mutationType", mutationNametextField.getText());
-        templateModel.put("actionTypeName", StringFormatter.capitalizeFirst(actionFunctionName) + "Action");
-        templateModel.put("actionTypesEnumName", StringFormatter.toDashCase(moduleName).toUpperCase() + "_ACTIONS");
-
-        return templateModel;
+        return new ReducerVariables(actionFunctionName, moduleName, mutationNametextField.getText());
     }
 
     @Override

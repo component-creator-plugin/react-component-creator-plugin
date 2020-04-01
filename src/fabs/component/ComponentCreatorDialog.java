@@ -1,8 +1,10 @@
 package fabs.component;
 
 import com.intellij.openapi.project.Project;
+import fabs.reducer.data.ReducerVariables;
 import fabs.util.AbstractDialog;
 import fabs.util.StringFormatter;
+import fabs.util.VariableHolder;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -44,14 +46,8 @@ public class ComponentCreatorDialog extends AbstractDialog {
         contentPane.registerKeyboardAction(e -> onCancel(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    public Map<String, Object> getTemplateVars() {
-        Map<String, Object> templateModel = new HashMap<>();
-        String componentName = componentNameTextField.getText();
-
-        templateModel.put("componentName", componentName);
-        templateModel.put("componentCamelcaseName", StringFormatter.toCamelCase(componentName));
-
-        return templateModel;
+    public VariableHolder getVariables() {
+        return new ReducerVariables("", "", "");
     }
 
     public String getComponentName() {

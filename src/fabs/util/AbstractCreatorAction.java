@@ -52,7 +52,7 @@ public abstract class AbstractCreatorAction extends AnAction {
 
         ArrayList<String> files = dialog.getFiles(e.getProject());
         ApplicationManager.getApplication().runWriteAction(
-                new Creator(targetLocation, dialog.getDirectoryName(), dialog.getComponentName(), dialog.getTemplateVars(), files.toArray(new String[files.size()]))
+                new Creator(targetLocation, dialog.getDirectoryName(), dialog.getComponentName(), dialog.getVariables(), files.toArray(new String[files.size()]))
         );
     }
 }

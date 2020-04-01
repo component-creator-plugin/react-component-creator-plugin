@@ -9,11 +9,8 @@ import java.util.Map;
 public class TemplateRenderer {
     /**
      * Render a template
-     * @param file
-     * @param context
-     * @return
      */
-    public static String render(String file, Map<String, Object> context) throws FileNotFoundException {
+    public static String render(String file, Map<String, String> context) throws FileNotFoundException {
         FileUtils utils = new FileUtils();
         Template tmpl = Mustache.compiler().compile(utils.getContent(file));
         return tmpl.execute(context);
@@ -21,16 +18,16 @@ public class TemplateRenderer {
 
     /**
      * Transform a filename
-     * @param templateString
-     * @param componentName
-     * @return
      */
-    public static String transformTemplateName(String templateString, String componentName) {
+    public static String transformTemplateName(String templateString, Map<String, String> variables) {
         String[] parts = templateString.split("/");
         String fileName = parts[parts.length - 1];
-        return fileName
-                .replace(".mustache", "")
-                .replace("component", componentName)
-                ;
+
+        Object[] keys = variables.keySet().toArray();
+
+        for (Object key : keys) {
+            fileName = fileName.replace("{{" + key.toString() + "}}", variables.get(key));
+        }
+        return fileName;
     }
 }

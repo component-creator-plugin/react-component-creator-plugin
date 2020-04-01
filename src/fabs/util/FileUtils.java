@@ -9,16 +9,18 @@ public class FileUtils {
 
     /**
      * Get the file content
-     *
-     * @param fileName
-     * @return
      */
-    public String getContent(String fileName) throws FileNotFoundException {
+    public String getContent(String filePath) throws FileNotFoundException {
         StringBuilder result = new StringBuilder("");
         ClassLoader classLoader = getClass().getClassLoader();
-        InputStream resourceStream = classLoader.getResourceAsStream(fileName);
-        InputStreamReader i = new FileReader(fileName);
-        Scanner scanner = new Scanner(i);
+        InputStream resourceStream = classLoader.getResourceAsStream(filePath);
+
+        File tmpFile = new File(filePath);
+        if (tmpFile.exists()) {
+            resourceStream = new FileInputStream(filePath);
+        }
+
+        Scanner scanner = new Scanner(resourceStream);
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();

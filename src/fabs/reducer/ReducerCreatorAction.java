@@ -10,6 +10,6 @@ public class ReducerCreatorAction extends AbstractCreatorAction {
     @Override
     protected AbstractDialog createDialog(Project project) {
         ReducerSettingsState state = ReducerSettingsState.getInstance(project);
-        return new ReducerDialog(state.getReducerCreateOptions());
+        return new ReducerDialog(state.getOptions());
     }
 }

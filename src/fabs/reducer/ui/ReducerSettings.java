@@ -18,11 +18,11 @@ public class ReducerSettings implements Configurable {
         currentProject = project;
     }
 
-    @Nls(capitalization = Nls.Capitalization.Title)
-    @Override
     /**
      * Name used for settings
      */
+    @Nls(capitalization = Nls.Capitalization.Title)
+    @Override
     public String getDisplayName() {
         return "Redux Reducer";
     }
@@ -31,7 +31,7 @@ public class ReducerSettings implements Configurable {
     @Override
     public JComponent createComponent() {
         if (ui == null) {
-            ui = new ReducerSettingsUI(getState().getReducerCreateOptions());
+            ui = new ReducerSettingsUI(getState().getOptions());
         }
         reset();
 
@@ -49,6 +49,6 @@ public class ReducerSettings implements Configurable {
 
     @Override
     public void apply() throws ConfigurationException {
-        ui.applySettings(getState().getReducerCreateOptions());
+        ui.applySettings(getState().getOptions());
     }
 }

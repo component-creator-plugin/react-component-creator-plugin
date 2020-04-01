@@ -1,18 +1,15 @@
-package fabs.component;
+package fabs.component.ui;
 
 import com.intellij.openapi.project.Project;
 import fabs.reducer.data.ReducerVariables;
 import fabs.util.AbstractDialog;
-import fabs.util.StringFormatter;
 import fabs.util.VariableHolder;
 
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-public class ComponentCreatorDialog extends AbstractDialog {
+public class CreateComponentForm extends AbstractDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JTextField componentNameTextField;
@@ -21,13 +18,13 @@ public class ComponentCreatorDialog extends AbstractDialog {
     private JCheckBox SCSSCheckBox;
     private JCheckBox markdownCheckBox;
 
-    private final String componentTemplateFile = "templates/component/component.tsx.mustache";
-    private final String sassTemplateFile = "templates/component/_component.scss.mustache";
-    private final String specTemplateFile = "templates/component/component.spec.tsx.mustache";
-    private final String storyTemplateFile = "templates/component/component.story.tsx.mustache";
-    private final String markdownTemplateFile = "templates/component/component.md.mustache";
+    private final String componentTemplateFile = "templates/component/{{componentName}}.tsx.mustache";
+    private final String sassTemplateFile = "templates/component/_{{componentName}}.scss.mustache";
+    private final String specTemplateFile = "templates/component/{{componentName}}.spec.tsx.mustache";
+    private final String storyTemplateFile = "templates/component/{{componentName}}.story.tsx.mustache";
+    private final String markdownTemplateFile = "templates/component/{{componentName}}.md.mustache";
 
-    public ComponentCreatorDialog() {
+    public CreateComponentForm() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);

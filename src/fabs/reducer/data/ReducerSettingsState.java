@@ -1,10 +1,9 @@
-package fabs.reducer.state;
+package fabs.reducer.data;
 
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.project.Project;
-import fabs.reducer.data.ReducerCreateOptions;
 import fabs.util.AbstractPersistentState;
 
 @State(

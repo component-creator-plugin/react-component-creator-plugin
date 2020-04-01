@@ -1,21 +1,27 @@
-package fabs.reducer.ui;
+package fabs.reducer.settings;
 
-import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.project.Project;
-import fabs.reducer.state.ReducerSettingsState;
+import fabs.reducer.data.ReducerCreateOptions;
+import fabs.reducer.data.ReducerSettingsState;
 import fabs.reducer.ui.settings.ReducerSettingsUI;
+import fabs.util.AbstractSettingsUI;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 
-public class ReducerSettings implements Configurable {
+public class ReducerSettings extends AbstractSettingsUI<ReducerCreateOptions> {
     private ReducerSettingsUI ui;
-    private Project currentProject;
 
     public ReducerSettings(Project project) {
-        currentProject = project;
+        super(project);
+    }
+
+
+    @Override
+    public ReducerCreateOptions getOptions() {
+        return ReducerSettingsState.getInstance(project).getOptions();
     }
 
     /**
@@ -31,16 +37,13 @@ public class ReducerSettings implements Configurable {
     @Override
     public JComponent createComponent() {
         if (ui == null) {
-            ui = new ReducerSettingsUI(getState().getOptions());
+            ui = new ReducerSettingsUI(getOptions());
         }
         reset();
 
         return ui.getMainPanel();
     }
 
-    private ReducerSettingsState getState() {
-        return ReducerSettingsState.getInstance(currentProject);
-    }
 
     @Override
     public boolean isModified() {
@@ -49,6 +52,6 @@ public class ReducerSettings implements Configurable {
 
     @Override
     public void apply() throws ConfigurationException {
-        ui.applySettings(getState().getOptions());
+        ui.applySettings(getOptions());
     }
 }

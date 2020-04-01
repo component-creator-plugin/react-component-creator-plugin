@@ -1,11 +1,11 @@
-package fabs.reducer.ui.settings;
+package fabs.reducer.ui;
 
 import fabs.reducer.data.ReducerCreateOptions;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public class ReducerSettingsUI {
+public class SettingsForm {
     private JPanel mainPanel;
     private JTextField actionTypesTemplateInput;
     private JButton actionTypesTemplateButton;
@@ -18,7 +18,7 @@ public class ReducerSettingsUI {
     private ReducerCreateOptions options;
     private JFileChooser fileChooser;
 
-    public ReducerSettingsUI(ReducerCreateOptions options) {
+    public SettingsForm(ReducerCreateOptions options) {
         this.options = options;
         fileChooser = new JFileChooser();
 

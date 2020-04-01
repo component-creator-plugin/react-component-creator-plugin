@@ -12,7 +12,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
-public class ReducerDialog extends AbstractDialog {
+public class CreateReducerForm extends AbstractDialog {
 
     private JPanel contentPanel;
     private JTextField moduleNameTextField;
@@ -21,7 +21,7 @@ public class ReducerDialog extends AbstractDialog {
     private JTextField mutationNametextField;
     private ReducerCreateOptions options;
 
-    public ReducerDialog(ReducerCreateOptions options) {
+    public CreateReducerForm(ReducerCreateOptions options) {
         this.options = options;
         setContentPane(contentPanel);
         setModal(true);

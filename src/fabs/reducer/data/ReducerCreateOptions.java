@@ -1,13 +1,16 @@
 package fabs.reducer.data;
 
-import fabs.reducer.state.ReducerSettingKeys;
 import fabs.util.SerializableOptions;
 import org.jdom.Element;
 
 import java.util.ArrayList;
 
 public class ReducerCreateOptions implements SerializableOptions {
-    public static final String STORE_KEY = "ReducerSettings";
+    public static final String STORE_KEY = "rcc.reducer";
+    private final static String ACTION_TEMPLATE = "ACTION_TEMPLATE";
+    private final static String ACTION_TYPES_TEMPLATE = "ACTION_TYPES_TEMPLATE";
+    private final static String INDEX_TEMPLATE = "INDEX_TEMPLATE";
+    private final static String TYPES_TEMPLATE = "TYPES_TEMPLATE";
 
     private String defaultActionTemplateFile = "templates/reducer/actions.ts.mustache";
     private String defaultModuleIndexTemplateFile = "templates/reducer/index.ts.mustache";
@@ -21,18 +24,18 @@ public class ReducerCreateOptions implements SerializableOptions {
 
     public Element serialize() {
         final Element element = new Element(STORE_KEY);
-        element.setAttribute(ReducerSettingKeys.ACTION_TEMPLATE, actionTemplateFile);
-        element.setAttribute(ReducerSettingKeys.INDEX_TEMPLATE, moduleIndexTemplateFile);
-        element.setAttribute(ReducerSettingKeys.ACTION_TYPES_TEMPLATE, actionTypesTemplateFile);
-        element.setAttribute(ReducerSettingKeys.TYPES_TEMPLATE, typesTemplateFile);
+        element.setAttribute(ACTION_TEMPLATE, actionTemplateFile);
+        element.setAttribute(INDEX_TEMPLATE, moduleIndexTemplateFile);
+        element.setAttribute(ACTION_TYPES_TEMPLATE, actionTypesTemplateFile);
+        element.setAttribute(TYPES_TEMPLATE, typesTemplateFile);
         return element;
     }
 
     public void deserialize(Element element) {
-        setActionTemplateFile(element.getAttributeValue(ReducerSettingKeys.ACTION_TEMPLATE));
-        setActionTypesTemplateFile(element.getAttributeValue(ReducerSettingKeys.ACTION_TYPES_TEMPLATE));
-        setModuleIndexTemplateFile(element.getAttributeValue(ReducerSettingKeys.INDEX_TEMPLATE));
-        setTypesTemplateFile(element.getAttributeValue(ReducerSettingKeys.TYPES_TEMPLATE));
+        setActionTemplateFile(element.getAttributeValue(ACTION_TEMPLATE));
+        setActionTypesTemplateFile(element.getAttributeValue(ACTION_TYPES_TEMPLATE));
+        setModuleIndexTemplateFile(element.getAttributeValue(INDEX_TEMPLATE));
+        setTypesTemplateFile(element.getAttributeValue(TYPES_TEMPLATE));
     }
 
     public ArrayList<String> getFiles() {

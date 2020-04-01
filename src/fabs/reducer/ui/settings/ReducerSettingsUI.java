@@ -23,18 +23,27 @@ public class ReducerSettingsUI {
         fileChooser = new JFileChooser();
 
         // Set default settings received from state
-        actionTypesTemplateInput.setText(options.getActionTypesTemplateFile());
-        actionsTemplateInput.setText(options.getActionTemplateFile());
-        indexTemplateInput.setText(options.getModuleIndexTemplateFile());
-        typesTemplateInput.setText(options.getTypesTemplateFile());
+        if (!options.isActionTypesTemplateDefault()) {
+            actionTypesTemplateInput.setText(options.getActionTypesTemplateFile());
+        }
+
+        if (!options.isActionTemplateDefault()) {
+            actionsTemplateInput.setText(options.getActionTemplateFile());
+        }
+
+        if (!options.isModuleTemplateDefault()) {
+            indexTemplateInput.setText(options.getModuleIndexTemplateFile());
+        }
+
+        if (!options.isTypesTemplateDefault()) {
+            typesTemplateInput.setText(options.getTypesTemplateFile());
+        }
 
         // Add listeners for browse button
         actionTypesTemplateButton.addActionListener(e -> onBrowseButtonClicked(e, actionTypesTemplateInput));
         actionsTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, actionsTemplateInput));
         indexTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, indexTemplateInput));
         typesTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, typesTemplateInput));
-
-//        variableTable.setModel(new VariableListModel());
     }
 
     /**
@@ -50,22 +59,41 @@ public class ReducerSettingsUI {
      * Apply inputfield values to option object to be persisted in state
      */
     public void applySettings(ReducerCreateOptions options) {
-        options.setActionTypesTemplateFile(actionTypesTemplateInput.getText());
-        options.setActionTemplateFile(actionsTemplateInput.getText());
-        options.setModuleIndexTemplateFile(indexTemplateInput.getText());
-        options.setTypesTemplateFile(typesTemplateInput.getText());
+        String actionTypes = actionTypesTemplateInput.getText();
+        String actions = actionsTemplateInput.getText();
+        String index = indexTemplateInput.getText();
+        String types = typesTemplateInput.getText();
+
+        if (actionTypes != null) {
+            options.setActionTypesTemplateFile(actionTypes);
+        }
+
+        if (actions != null) {
+            options.setActionTemplateFile(actions);
+        }
+
+        if (index != null) {
+            options.setModuleIndexTemplateFile(index);
+        }
+
+        if (types != null) {
+            options.setTypesTemplateFile(types);
+        }
     }
 
     /**
      * Define whether the state is dirty or not
      */
     public boolean isDirty() {
-        return !(options.getActionTypesTemplateFile() == actionTypesTemplateInput.getText() &&
-                options.getActionTemplateFile() == actionsTemplateInput.getText());
+        return !(
+                options.getActionTypesTemplateFile().equals(actionTypesTemplateInput.getText())
+                        && options.getActionTemplateFile().equals(actionsTemplateInput.getText())
+                        && options.getModuleIndexTemplateFile().equals(indexTemplateInput.getText())
+                        && options.getTypesTemplateFile().equals(typesTemplateInput.getText())
+        );
     }
 
     public JComponent getMainPanel() {
         return mainPanel;
     }
-
 }

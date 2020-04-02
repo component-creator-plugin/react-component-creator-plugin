@@ -37,6 +37,7 @@ public class CreateComponentForm extends AbstractDialog<ComponentCreateOptions> 
 
     @Override
     protected void onOK() {
+        options.setComponentName(componentNameTextField.getText());
         options.setCreateStoryFile(storybookCheckBox.isSelected());
         options.setCreateSpecFile(unitTestCheckBox.isSelected());
         options.setCreateSassFile(SCSSCheckBox.isSelected());

@@ -1,9 +1,11 @@
 package fabs.component.data;
 
 import fabs.util.AbstractOptions;
+import fabs.util.StringFormatter;
 import org.jdom.Element;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ComponentCreateOptions extends AbstractOptions {
@@ -31,6 +33,8 @@ public class ComponentCreateOptions extends AbstractOptions {
     private Boolean isCreateStoryFile = false;
     private Boolean isCreateMDFile = false;
 
+    private String componentName;
+
     @Override
     public Element serialize() {
         final Element element = new Element(STORE_KEY);
@@ -54,6 +58,7 @@ public class ComponentCreateOptions extends AbstractOptions {
     @Override
     public ArrayList<String> getFiles() {
         ArrayList<String> files = new ArrayList<>();
+        files.add(componentTemplateFile);
 
         if (isCreateStoryFile) {
             files.add(storyTemplateFile);
@@ -67,10 +72,6 @@ public class ComponentCreateOptions extends AbstractOptions {
             files.add(specTemplateFile);
         }
 
-        if (isCreateStoryFile) {
-            files.add(storyTemplateFile);
-        }
-
         if (isCreateMDFile) {
             files.add(this.markdownTemplateFile);
         }
@@ -79,7 +80,12 @@ public class ComponentCreateOptions extends AbstractOptions {
 
     @Override
     public Map<String, String> getTemplateVariables() {
-        return null;
+        Map<String, String> templateModel = new HashMap<>();
+
+        templateModel.put("componentName", componentName);
+        templateModel.put("componentCamelcaseName", StringFormatter.toCamelCase(componentName));
+
+        return templateModel;
     }
 
 
@@ -141,5 +147,9 @@ public class ComponentCreateOptions extends AbstractOptions {
 
     public void setCreateMDFile(Boolean createMDFile) {
         isCreateMDFile = createMDFile;
+    }
+
+    public void setComponentName(String componentName) {
+        this.componentName = componentName;
     }
 }

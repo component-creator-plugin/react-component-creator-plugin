@@ -133,6 +133,26 @@ public class ComponentCreateOptions extends AbstractOptions {
         this.markdownTemplateFile = markdownTemplateFile;
     }
 
+    public boolean isComponentTemplateDefault() {
+        return componentTemplateFile.equals(defaultComponentTemplateFile);
+    }
+
+    public boolean isSassTemplateDefault() {
+        return sassTemplateFile.equals(defaultSassTemplateFile);
+    }
+
+    public boolean isSpecTemplateDefault() {
+        return specTemplateFile.equals(defaultSpecTemplateFile);
+    }
+
+    public boolean isStoryTemplateDefault() {
+        return storyTemplateFile.equals(defaultStoryTemplateFile);
+    }
+
+    public boolean isMDTemplateDefault() {
+        return markdownTemplateFile.equals(defaultMarkdownTemplateFile);
+    }
+
     public void setCreateSassFile(Boolean createSassFile) {
         isCreateSassFile = createSassFile;
     }
@@ -151,5 +171,25 @@ public class ComponentCreateOptions extends AbstractOptions {
 
     public void setComponentName(String componentName) {
         this.componentName = componentName;
+    }
+
+    public String getComponentTemplateFile() {
+        return componentTemplateFile;
+    }
+
+    public String getSassTemplateFile() {
+        return sassTemplateFile;
+    }
+
+    public String getSpecTemplateFile() {
+        return specTemplateFile;
+    }
+
+    public String getStoryTemplateFile() {
+        return storyTemplateFile;
+    }
+
+    public String getMarkdownTemplateFile() {
+        return markdownTemplateFile;
     }
 }

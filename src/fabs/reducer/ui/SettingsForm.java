@@ -1,11 +1,11 @@
 package fabs.reducer.ui;
 
 import fabs.reducer.data.ReducerCreateOptions;
+import fabs.util.AbstractSettingsForm;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 
-public class SettingsForm {
+public class SettingsForm extends AbstractSettingsForm<ReducerCreateOptions> {
     private JPanel mainPanel;
     private JTextField actionTypesTemplateInput;
     private JButton actionTypesTemplateButton;
@@ -15,12 +15,9 @@ public class SettingsForm {
     private JTextField typesTemplateInput;
     private JButton indexTemplateBtn;
     private JButton typesTemplateBtn;
-    private ReducerCreateOptions options;
-    private JFileChooser fileChooser;
 
     public SettingsForm(ReducerCreateOptions options) {
-        this.options = options;
-        fileChooser = new JFileChooser();
+        super(options);
 
         // Set default settings received from state
         if (!options.isActionTypesTemplateDefault()) {
@@ -46,18 +43,21 @@ public class SettingsForm {
         typesTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, typesTemplateInput));
     }
 
-    /**
-     * Handle browse button clicks
-     */
-    private void onBrowseButtonClicked(ActionEvent e, JTextField input) {
-        if (fileChooser.showOpenDialog(getMainPanel()) == JFileChooser.APPROVE_OPTION) {
-            input.setText(fileChooser.getSelectedFile().getAbsolutePath());
-        }
+    @Override
+    public JComponent getMainPanel() {
+        return this.mainPanel;
     }
 
-    /**
-     * Apply inputfield values to option object to be persisted in state
-     */
+    public boolean isDirty() {
+        return !(
+                options.getActionTypesTemplateFile().equals(actionTypesTemplateInput.getText())
+                        && options.getActionTemplateFile().equals(actionsTemplateInput.getText())
+                        && options.getModuleIndexTemplateFile().equals(indexTemplateInput.getText())
+                        && options.getTypesTemplateFile().equals(typesTemplateInput.getText())
+        );
+    }
+
+    @Override
     public void applySettings(ReducerCreateOptions options) {
         String actionTypes = actionTypesTemplateInput.getText();
         String actions = actionsTemplateInput.getText();
@@ -81,19 +81,4 @@ public class SettingsForm {
         }
     }
 
-    /**
-     * Define whether the state is dirty or not
-     */
-    public boolean isDirty() {
-        return !(
-                options.getActionTypesTemplateFile().equals(actionTypesTemplateInput.getText())
-                        && options.getActionTemplateFile().equals(actionsTemplateInput.getText())
-                        && options.getModuleIndexTemplateFile().equals(indexTemplateInput.getText())
-                        && options.getTypesTemplateFile().equals(typesTemplateInput.getText())
-        );
-    }
-
-    public JComponent getMainPanel() {
-        return mainPanel;
-    }
 }

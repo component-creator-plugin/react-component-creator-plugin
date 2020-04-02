@@ -1,9 +1,12 @@
 package fabs.component.data;
 
-import fabs.util.SerializableOptions;
+import fabs.util.AbstractOptions;
 import org.jdom.Element;
 
-public class ComponentCreateOptions implements SerializableOptions {
+import java.util.ArrayList;
+import java.util.Map;
+
+public class ComponentCreateOptions extends AbstractOptions {
     public static final String STORE_KEY = "rcc.component";
     private final String COMPONENT_TEMPLATE_KEY = "COMPONENT_TEMPLATE_KEY";
     private final String SASS_TEMPLATE_KEY = "SASS_TEMPLATE_KEY";
@@ -22,6 +25,11 @@ public class ComponentCreateOptions implements SerializableOptions {
     private String specTemplateFile = defaultSpecTemplateFile;
     private String storyTemplateFile = defaultStoryTemplateFile;
     private String markdownTemplateFile = defaultMarkdownTemplateFile;
+
+    private Boolean isCreateSassFile = false;
+    private Boolean isCreateSpecFile = false;
+    private Boolean isCreateStoryFile = false;
+    private Boolean isCreateMDFile = false;
 
     @Override
     public Element serialize() {
@@ -43,9 +51,37 @@ public class ComponentCreateOptions implements SerializableOptions {
         setMarkdownTemplateFile(element.getAttributeValue(MD_TEMPLATE_KEY));
     }
 
-    public String getComponentTemplateFile() {
-        return componentTemplateFile;
+    @Override
+    public ArrayList<String> getFiles() {
+        ArrayList<String> files = new ArrayList<>();
+
+        if (isCreateStoryFile) {
+            files.add(storyTemplateFile);
+        }
+
+        if (isCreateSassFile) {
+            files.add(sassTemplateFile);
+        }
+
+        if (isCreateSpecFile) {
+            files.add(specTemplateFile);
+        }
+
+        if (isCreateStoryFile) {
+            files.add(storyTemplateFile);
+        }
+
+        if (isCreateMDFile) {
+            files.add(this.markdownTemplateFile);
+        }
+        return files;
     }
+
+    @Override
+    public Map<String, String> getTemplateVariables() {
+        return null;
+    }
+
 
     public void setComponentTemplateFile(String componentTemplateFile) {
         if (componentTemplateFile == null || componentTemplateFile.isEmpty()) {
@@ -55,9 +91,6 @@ public class ComponentCreateOptions implements SerializableOptions {
         this.componentTemplateFile = componentTemplateFile;
     }
 
-    public String getSassTemplateFile() {
-        return sassTemplateFile;
-    }
 
     public void setSassTemplateFile(String sassTemplateFile) {
         if (sassTemplateFile == null || sassTemplateFile.isEmpty()) {
@@ -67,9 +100,6 @@ public class ComponentCreateOptions implements SerializableOptions {
         this.sassTemplateFile = sassTemplateFile;
     }
 
-    public String getSpecTemplateFile() {
-        return specTemplateFile;
-    }
 
     public void setSpecTemplateFile(String specTemplateFile) {
         if (specTemplateFile == null || specTemplateFile.isEmpty()) {
@@ -79,9 +109,6 @@ public class ComponentCreateOptions implements SerializableOptions {
         this.specTemplateFile = specTemplateFile;
     }
 
-    public String getStoryTemplateFile() {
-        return storyTemplateFile;
-    }
 
     public void setStoryTemplateFile(String storyTemplateFile) {
         if (storyTemplateFile == null || storyTemplateFile.isEmpty()) {
@@ -91,9 +118,6 @@ public class ComponentCreateOptions implements SerializableOptions {
         this.storyTemplateFile = storyTemplateFile;
     }
 
-    public String getMarkdownTemplateFile() {
-        return markdownTemplateFile;
-    }
 
     public void setMarkdownTemplateFile(String markdownTemplateFile) {
         if (markdownTemplateFile == null || markdownTemplateFile.isEmpty()) {
@@ -101,5 +125,21 @@ public class ComponentCreateOptions implements SerializableOptions {
             return;
         }
         this.markdownTemplateFile = markdownTemplateFile;
+    }
+
+    public void setCreateSassFile(Boolean createSassFile) {
+        isCreateSassFile = createSassFile;
+    }
+
+    public void setCreateSpecFile(Boolean createSpecFile) {
+        isCreateSpecFile = createSpecFile;
+    }
+
+    public void setCreateStoryFile(Boolean createStoryFile) {
+        isCreateStoryFile = createStoryFile;
+    }
+
+    public void setCreateMDFile(Boolean createMDFile) {
+        isCreateMDFile = createMDFile;
     }
 }

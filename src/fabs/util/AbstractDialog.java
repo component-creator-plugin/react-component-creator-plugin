@@ -6,17 +6,23 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Map;
 
-public abstract class AbstractDialog extends JDialog {
+public abstract class AbstractDialog<T extends AbstractOptions> extends JDialog {
+    protected T options;
 
-    public abstract ArrayList<String> getFiles(Project project);
-
-    public abstract VariableHolder getVariables();
+    public AbstractDialog(T options) {
+        super();
+        this.options = options;
+    }
 
     public abstract String getComponentName();
 
     public abstract String getDirectoryName();
 
     protected boolean hasCanceled = false;
+
+    public ArrayList<String> getFiles() {
+        return options.getFiles();
+    }
 
     public boolean isCanceled() {
         return hasCanceled;
@@ -30,5 +36,9 @@ public abstract class AbstractDialog extends JDialog {
     protected void onCancel() {
         hasCanceled = true;
         dispose();
+    }
+
+    public T getOptions() {
+        return options;
     }
 }

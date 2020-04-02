@@ -1,28 +1,23 @@
 package fabs.reducer.ui;
 
-import com.intellij.openapi.project.Project;
 import fabs.reducer.data.ReducerCreateOptions;
-import fabs.reducer.data.ReducerVariables;
 import fabs.util.AbstractDialog;
-import fabs.util.VariableHolder;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 
-public class CreateReducerForm extends AbstractDialog {
+public class CreateReducerForm extends AbstractDialog<ReducerCreateOptions> {
 
     private JPanel contentPanel;
     private JTextField moduleNameTextField;
     private JTextField actionNameTextField;
     private JButton createButton;
     private JTextField mutationNametextField;
-    private ReducerCreateOptions options;
 
     public CreateReducerForm(ReducerCreateOptions options) {
-        this.options = options;
+        super(options);
         setContentPane(contentPanel);
         setModal(true);
         getRootPane().setDefaultButton(createButton);
@@ -39,24 +34,19 @@ public class CreateReducerForm extends AbstractDialog {
     }
 
     @Override
-    public ArrayList<String> getFiles(Project project) {
-        return options.getFiles();
-    }
-
-    @Override
-    public VariableHolder getVariables() {
-        String actionFunctionName = actionNameTextField.getText();
-        String moduleName = moduleNameTextField.getText();
-
-        return new ReducerVariables(actionFunctionName, moduleName, mutationNametextField.getText());
-    }
-
-    @Override
     public String getComponentName() {
         return "";
     }
 
     public String getDirectoryName() {
         return moduleNameTextField.getText();
+    }
+
+    @Override
+    protected void onOK() {
+        options.setActionFunctionName(actionNameTextField.getText());
+        options.setModuleName(moduleNameTextField.getText());
+        options.setMutationType(mutationNametextField.getText());
+        super.onOK();
     }
 }

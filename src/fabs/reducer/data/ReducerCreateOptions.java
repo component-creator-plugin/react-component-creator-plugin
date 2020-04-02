@@ -1,11 +1,14 @@
 package fabs.reducer.data;
 
-import fabs.util.SerializableOptions;
+import fabs.util.AbstractOptions;
+import fabs.util.StringFormatter;
 import org.jdom.Element;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public class ReducerCreateOptions implements SerializableOptions {
+public class ReducerCreateOptions extends AbstractOptions {
     public static final String STORE_KEY = "rcc.reducer";
     private final static String ACTION_TEMPLATE = "ACTION_TEMPLATE";
     private final static String ACTION_TYPES_TEMPLATE = "ACTION_TYPES_TEMPLATE";
@@ -21,6 +24,11 @@ public class ReducerCreateOptions implements SerializableOptions {
     private String moduleIndexTemplateFile = defaultModuleIndexTemplateFile;
     private String typesTemplateFile = defaultTypesTemplateFile;
     private String actionTypesTemplateFile = defaultActionTypesTemplateFile;
+
+    private String actionFunctionName;
+    private String moduleName;
+    private String mutationType;
+
 
     public Element serialize() {
         final Element element = new Element(STORE_KEY);
@@ -45,6 +53,22 @@ public class ReducerCreateOptions implements SerializableOptions {
         files.add(typesTemplateFile);
         files.add(actionTypesTemplateFile);
         return files;
+    }
+
+    @Override
+    public Map<String, String> getTemplateVariables() {
+        Map<String, String> templateModel = new HashMap<>();
+
+        templateModel.put("actionFunctionName", actionFunctionName);
+        templateModel.put("moduleName", moduleName);
+        templateModel.put("mutationType", mutationType);
+
+        templateModel.put("moduleNamePascalCase", StringFormatter.toCamelCase(moduleName));
+        templateModel.put("stateName", StringFormatter.toCamelCase(moduleName) + "State");
+        templateModel.put("actionTypeName", StringFormatter.capitalizeFirst(actionFunctionName) + "Action");
+        templateModel.put("actionTypesEnumName", StringFormatter.toDashCase(moduleName).toUpperCase() + "_ACTIONS");
+
+        return templateModel;
     }
 
     public void setActionTemplateFile(String actionTemplateFile) {
@@ -130,5 +154,17 @@ public class ReducerCreateOptions implements SerializableOptions {
 
     public boolean isActionTypesTemplateDefault() {
         return this.actionTypesTemplateFile.equals(this.defaultActionTypesTemplateFile);
+    }
+
+    public void setActionFunctionName(String actionFunctionName) {
+        this.actionFunctionName = actionFunctionName;
+    }
+
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
+    }
+
+    public void setMutationType(String mutationType) {
+        this.mutationType = mutationType;
     }
 }

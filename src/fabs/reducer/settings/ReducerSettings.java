@@ -4,7 +4,7 @@ import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.project.Project;
 import fabs.reducer.data.ReducerCreateOptions;
 import fabs.reducer.data.ReducerSettingsState;
-import fabs.reducer.ui.settings.ReducerSettingsUI;
+import fabs.reducer.ui.SettingsForm;
 import fabs.util.AbstractSettingsUI;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 
 public class ReducerSettings extends AbstractSettingsUI<ReducerCreateOptions> {
-    private ReducerSettingsUI ui;
+    private SettingsForm ui;
 
     public ReducerSettings(Project project) {
         super(project);
@@ -37,7 +37,7 @@ public class ReducerSettings extends AbstractSettingsUI<ReducerCreateOptions> {
     @Override
     public JComponent createComponent() {
         if (ui == null) {
-            ui = new ReducerSettingsUI(getOptions());
+            ui = new SettingsForm(getOptions());
         }
         reset();
 

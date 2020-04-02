@@ -9,7 +9,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.pom.Navigatable;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public abstract class AbstractCreatorAction extends AnAction {
 
@@ -50,9 +49,8 @@ public abstract class AbstractCreatorAction extends AnAction {
             return;
         }
 
-        ArrayList<String> files = dialog.getFiles(e.getProject());
         ApplicationManager.getApplication().runWriteAction(
-                new Creator(targetLocation, dialog.getDirectoryName(), dialog.getComponentName(), dialog.getVariables(), files.toArray(new String[files.size()]))
+                new Creator(targetLocation, dialog.getDirectoryName(), dialog.getComponentName(), dialog.getOptions())
         );
     }
 }

@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.faebeee.reactcomponentcreator</id>
     <name>React Component Creator</name>
-    <version>0.3.1</version>
+    <version>0.4.0</version>
     <vendor email="faebeee@gmail.com" url="http://fabs.io">Fabio Gianini</vendor>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->

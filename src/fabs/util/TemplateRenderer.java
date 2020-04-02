@@ -24,6 +24,7 @@ public class TemplateRenderer {
         String fileName = parts[parts.length - 1];
 
         Object[] keys = variables.keySet().toArray();
+        fileName = fileName.replace(".mustache", "");
 
         for (Object key : keys) {
             fileName = fileName.replace("{{" + key.toString() + "}}", variables.get(key));

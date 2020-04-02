@@ -2,6 +2,7 @@ import { Action } from 'redux';
 import { {{ actionTypesEnumName }} } from './action-types';
 
 export interface {{ stateName }} {
+    data: any;
 }
 
 export type {{ actionTypeName }} = Action< {{ actionTypesEnumName }}.{{ mutationType }}> & {

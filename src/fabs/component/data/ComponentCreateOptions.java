@@ -35,6 +35,10 @@ public class ComponentCreateOptions extends AbstractOptions {
 
     private String componentName;
 
+    public ComponentCreateOptions() {
+    }
+
+
     @Override
     public Element serialize() {
         final Element element = new Element(STORE_KEY);
@@ -191,5 +195,14 @@ public class ComponentCreateOptions extends AbstractOptions {
 
     public String getMarkdownTemplateFile() {
         return markdownTemplateFile;
+    }
+
+    public boolean equals(ComponentCreateOptions options) {
+        return (options.getComponentTemplateFile().equals(componentTemplateFile)
+                && options.getStoryTemplateFile().equals(storyTemplateFile)
+                && options.getSpecTemplateFile().equals(specTemplateFile)
+                && options.getSassTemplateFile().equals(sassTemplateFile)
+                && options.getMarkdownTemplateFile().equals(markdownTemplateFile)
+        );
     }
 }

@@ -7,6 +7,7 @@ import org.jdom.Element;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class ReducerCreateOptions extends AbstractOptions {
     public static final String STORE_KEY = "rcc.reducer";
@@ -122,6 +123,22 @@ public class ReducerCreateOptions extends AbstractOptions {
             return;
         }
         this.actionTypesTemplateFile = actionTypesTemplateFile;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ReducerCreateOptions that = (ReducerCreateOptions) o;
+        return Objects.equals(actionTemplateFile, that.actionTemplateFile) &&
+                Objects.equals(moduleIndexTemplateFile, that.moduleIndexTemplateFile) &&
+                Objects.equals(typesTemplateFile, that.typesTemplateFile) &&
+                Objects.equals(actionTypesTemplateFile, that.actionTypesTemplateFile);
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;
     }
 
     public String getActionTemplateFile() {

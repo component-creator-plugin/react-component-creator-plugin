@@ -1,5 +1,6 @@
 package fabs.reducer.ui;
 
+import fabs.component.data.ComponentCreateOptions;
 import fabs.reducer.data.ReducerCreateOptions;
 import fabs.util.AbstractSettingsForm;
 
@@ -49,12 +50,12 @@ public class SettingsForm extends AbstractSettingsForm<ReducerCreateOptions> {
     }
 
     public boolean isDirty() {
-        return !(
-                options.getActionTypesTemplateFile().equals(actionTypesTemplateInput.getText())
-                        && options.getActionTemplateFile().equals(actionsTemplateInput.getText())
-                        && options.getModuleIndexTemplateFile().equals(indexTemplateInput.getText())
-                        && options.getTypesTemplateFile().equals(typesTemplateInput.getText())
-        );
+        ReducerCreateOptions o = new ReducerCreateOptions();
+        o.setActionTypesTemplateFile(actionTypesTemplateInput.getText());
+        o.setActionTemplateFile(actionsTemplateInput.getText());
+        o.setModuleIndexTemplateFile(indexTemplateInput.getText());
+        o.setTypesTemplateFile(typesTemplateInput.getText());
+        return !options.equals(o);
     }
 
     @Override

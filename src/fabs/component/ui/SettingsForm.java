@@ -57,7 +57,13 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
 
     @Override
     public boolean isDirty() {
-        return true;
+        ComponentCreateOptions o = new ComponentCreateOptions();
+        o.setComponentTemplateFile(componentTemplateInput.getText());
+        o.setSassTemplateFile(scssTemplateInput.getText());
+        o.setSpecTemplateFile(specTemplateInput.getText());
+        o.setStoryTemplateFile(storyTemplateInput.getText());
+        o.setMarkdownTemplateFile(mdTemplateInput.getText());
+        return !options.equals(o);
     }
 
     public void applySettings(ComponentCreateOptions options) {

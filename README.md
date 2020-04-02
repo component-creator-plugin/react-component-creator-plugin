@@ -1,7 +1,8 @@
 # react-component-creator
 - An Brainstorm Plugin to create a new react functional component with all additional files like
 SCSS, Spec, Storybook.
-- Add Redux reducer module with actions, mutations, state and types
+- Add Redux reducer module with actions, mutations, state and types.
+- Add custom templates to match your coding style and your needs.
 
 
 ![Create Reducer](./doc/settings.png "")

@@ -17,17 +17,49 @@
             <ul>
               <li>An Brainstorm Plugin to create a new react functional component with all additional files like
                 SCSS, Spec, Storybook.</li>
-              <li>Add Redux reducer module with actions, mutations, state and types</li>
+              <li>Add Redux reducer module with actions, mutations, state and types.</li>
+              <li>Add custom templates to match your coding style and your needs.</li>
             </ul>
+            <h1><a href="#custom-templates" id="custom-templates">Custom Templates</a></h1>
+            <p>If you are not happy with the predefined templates, you can choose your
+            own templates. The templates will be processed with mustache as templating.
+            All variables can also be used for the filenames.</p>
+            <p>Following variables are available</p>
+            <p><strong>Component</strong></p>
+            <table>
+              <thead>
+                <tr><th> variable </th><th> Description </th></tr>
+              </thead>
+              <tbody>
+                <tr><td> {{componentName}} </td><td> the inputted component name. Without any alterations </td></tr>
+                <tr><td> {{componentCamelcaseName}} </td><td> Camelcased input <code>my-component</code> becomes <code>MyComponent</code> </td></tr>
+              </tbody>
+            </table>
+            <p><strong>Reducer</strong></p>
+            <table>
+              <thead>
+                <tr><th> variable </th><th> Description </th></tr>
+              </thead>
+              <tbody>
+                <tr><td> {{actionFunctionName}} </td><td> Name of the function inside the <code>actions.ts</code> file </td></tr>
+                <tr><td> {{moduleName}} </td><td> Name of the folder </td></tr>
+                <tr><td> {{mutationType}} </td><td> String which will be used as type of the dispatch/mutation </td></tr>
+                <tr><td> {{moduleNamePascalCase}} </td><td> Pascalcased moduleName </td></tr>
+                <tr><td> {{stateName}} </td><td> Name for the state. <code>my-component</code> becomes <code>MyComponentState</code> </td></tr>
+                <tr><td> {{actionTypeName}} </td><td> Takes the input of <code>actionFunctionName</code> and capitalizes the first letter and appends <code>Action</code>. From <code>setData</code> becomes <code>SetDataAction</code> </td></tr>
+                <tr><td> {{actionTypesEnumName}} </td><td> Name used for the action types enum. actionTypesEnumName is the namespace where all <code>mutationType</code> actions are kept </td></tr>
+              </tbody>
+            </table>
         ]]>
     </description>
 
     <change-notes>
         <![CDATA[
            <ul>
-              <li>v0.3.1 Export enum for action types</li>
-              <li>v0.3.0 Add <code>Add Redux Reducer</code> Action</li>
-              <li>v0.2.0 Update UI & improve code</li>
+              <li>v0.4.0 Add Customisable templates. Improve a lot of code. Update doc</li>
+              <li>v0.2.1 Export enum for action types</li>
+              <li>v0.2.1 Export enum for action types</li>
+              <li>v0.2.0 Add <code>Add Redux Reducer</code> Action</li>
               <li>v0.1.0 Add <code>Add React Component</code> Action</li>
             </ul>
         ]]>

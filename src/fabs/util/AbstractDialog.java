@@ -1,24 +1,24 @@
 package fabs.util;
 
+import com.intellij.openapi.project.Project;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Map;
 
-public abstract class AbstractDialog extends JDialog {
+public abstract class AbstractDialog<T extends AbstractOptions> extends JDialog {
+    protected T options;
 
-    protected abstract ArrayList<String> getFiles();
-
-    public abstract Map<String, Object> getTemplateVars();
+    public AbstractDialog(T options) {
+        super();
+        this.options = options;
+    }
 
     public abstract String getComponentName();
+
     public abstract String getDirectoryName();
 
     protected boolean hasCanceled = false;
-
-    public String[] getFileList() {
-        ArrayList<String> files = getFiles();
-        return files.toArray(new String[files.size()]);
-    }
 
     public boolean isCanceled() {
         return hasCanceled;
@@ -32,5 +32,9 @@ public abstract class AbstractDialog extends JDialog {
     protected void onCancel() {
         hasCanceled = true;
         dispose();
+    }
+
+    public T getOptions() {
+        return options;
     }
 }

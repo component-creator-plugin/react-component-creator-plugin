@@ -12,7 +12,6 @@ public class ReducerSettings extends AbstractSettingsUI<ReducerCreateOptions> {
         super(project, "Redux Reducer");
     }
 
-
     @Override
     public ReducerCreateOptions getOptions() {
         return ReducerSettingsState.getInstance(project).getOptions();

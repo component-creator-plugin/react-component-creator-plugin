@@ -18,7 +18,6 @@ public class ReducerSettingsState extends AbstractPersistentState<ReducerCreateO
         super(new ReducerCreateOptions());
     }
 
-
     public static ReducerSettingsState getInstance(Project project) {
         return ServiceManager.getService(project, ReducerSettingsState.class);
     }

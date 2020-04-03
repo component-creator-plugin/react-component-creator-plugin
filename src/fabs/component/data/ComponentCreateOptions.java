@@ -35,10 +35,6 @@ public class ComponentCreateOptions extends AbstractOptions {
 
     private String componentName;
 
-    public ComponentCreateOptions() {
-    }
-
-
     @Override
     public Element serialize() {
         final Element element = new Element(STORE_KEY);
@@ -91,7 +87,6 @@ public class ComponentCreateOptions extends AbstractOptions {
 
         return templateModel;
     }
-
 
     public void setComponentTemplateFile(String componentTemplateFile) {
         if (componentTemplateFile == null || componentTemplateFile.isEmpty()) {

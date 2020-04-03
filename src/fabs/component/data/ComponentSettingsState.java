@@ -18,7 +18,6 @@ public class ComponentSettingsState extends AbstractPersistentState<ComponentCre
         super(new ComponentCreateOptions());
     }
 
-
     public static ComponentSettingsState getInstance(Project project) {
         return ServiceManager.getService(project, ComponentSettingsState.class);
     }

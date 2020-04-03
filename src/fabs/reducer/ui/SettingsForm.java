@@ -1,6 +1,5 @@
 package fabs.reducer.ui;
 
-import fabs.component.data.ComponentCreateOptions;
 import fabs.reducer.data.ReducerCreateOptions;
 import fabs.util.AbstractSettingsForm;
 

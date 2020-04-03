@@ -19,7 +19,6 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
     private JButton scssTemplateBtn;
     private JButton mdTemplateBtn;
 
-
     public SettingsForm(ComponentCreateOptions options) {
         super(options);
 

@@ -20,14 +20,6 @@ public abstract class AbstractDialog<T extends AbstractOptions> extends JDialog 
 
     protected boolean hasCanceled = false;
 
-    public ArrayList<String> getFiles() throws Exception {
-        ArrayList<String> files = options.getFiles();
-        if (files.size() <= 0) {
-            throw new Exception("At least one file is required");
-        }
-        return files;
-    }
-
     public boolean isCanceled() {
         return hasCanceled;
     }

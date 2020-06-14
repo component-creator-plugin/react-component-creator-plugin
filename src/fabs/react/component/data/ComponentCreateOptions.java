@@ -1,4 +1,4 @@
-package fabs.component.data;
+package fabs.react.component.data;
 
 import fabs.util.AbstractOptions;
 import fabs.util.StringFormatter;

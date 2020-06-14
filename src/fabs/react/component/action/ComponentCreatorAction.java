@@ -1,8 +1,8 @@
-package fabs.component.action;
+package fabs.react.component.action;
 
 import com.intellij.openapi.project.Project;
-import fabs.component.data.ComponentSettingsState;
-import fabs.component.ui.CreateComponentForm;
+import fabs.react.component.data.ComponentSettingsState;
+import fabs.react.component.ui.CreateComponentForm;
 import fabs.util.AbstractCreatorAction;
 import fabs.util.AbstractDialog;
 

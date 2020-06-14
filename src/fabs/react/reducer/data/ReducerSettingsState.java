@@ -1,4 +1,4 @@
-package fabs.reducer.data;
+package fabs.react.reducer.data;
 
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;

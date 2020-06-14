@@ -1,6 +1,6 @@
-package fabs.component.ui;
+package fabs.react.component.ui;
 
-import fabs.component.data.ComponentCreateOptions;
+import fabs.react.component.data.ComponentCreateOptions;
 import fabs.util.AbstractDialog;
 
 import javax.swing.*;

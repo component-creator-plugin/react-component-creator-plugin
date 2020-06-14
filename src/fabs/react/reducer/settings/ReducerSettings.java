@@ -1,9 +1,9 @@
-package fabs.reducer.settings;
+package fabs.react.reducer.settings;
 
 import com.intellij.openapi.project.Project;
-import fabs.reducer.data.ReducerCreateOptions;
-import fabs.reducer.data.ReducerSettingsState;
-import fabs.reducer.ui.SettingsForm;
+import fabs.react.reducer.data.ReducerCreateOptions;
+import fabs.react.reducer.data.ReducerSettingsState;
+import fabs.react.reducer.ui.SettingsForm;
 import fabs.util.AbstractSettingsForm;
 import fabs.util.AbstractSettingsUI;
 

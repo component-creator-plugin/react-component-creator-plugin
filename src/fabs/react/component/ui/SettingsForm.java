@@ -1,6 +1,6 @@
-package fabs.component.ui;
+package fabs.react.component.ui;
 
-import fabs.component.data.ComponentCreateOptions;
+import fabs.react.component.data.ComponentCreateOptions;
 import fabs.util.AbstractSettingsForm;
 
 import javax.swing.*;
@@ -18,6 +18,11 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
     private JButton specTemplateBtn;
     private JButton scssTemplateBtn;
     private JButton mdTemplateBtn;
+    private JButton componentTemplateResetBtn;
+    private JButton storybookTemplateReset;
+    private JButton specTemplateResetBtn;
+    private JButton scssTemplateReset;
+    private JButton mdTemplateResetBtn;
 
     public SettingsForm(ComponentCreateOptions options) {
         super(options);
@@ -43,10 +48,19 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
         }
 
         componentTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, componentTemplateInput));
+        componentTemplateResetBtn.addActionListener(e -> onResetButtonClicked(e, componentTemplateInput));
+
         storyTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, storyTemplateInput));
+        storybookTemplateReset.addActionListener(e -> onResetButtonClicked(e, storyTemplateInput));
+
         specTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, specTemplateInput));
+        specTemplateResetBtn.addActionListener(e -> onResetButtonClicked(e, specTemplateInput));
+
         scssTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, scssTemplateInput));
+        scssTemplateReset.addActionListener(e -> onResetButtonClicked(e, scssTemplateInput));
+
         mdTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, mdTemplateInput));
+        mdTemplateResetBtn.addActionListener(e -> onBrowseButtonClicked(e, mdTemplateInput));
     }
 
     @Override
@@ -72,24 +86,10 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
         String scss = scssTemplateInput.getText();
         String md = mdTemplateInput.getText();
 
-        if (!component.isEmpty()) {
-            options.setComponentTemplateFile(component);
-        }
-
-        if (!story.isEmpty()) {
-            options.setStoryTemplateFile(story);
-        }
-
-        if (!spec.isEmpty()) {
-            options.setSpecTemplateFile(spec);
-        }
-
-        if (!scss.isEmpty()) {
-            options.setSassTemplateFile(scss);
-        }
-
-        if (!md.isEmpty()) {
-            options.setMarkdownTemplateFile(md);
-        }
+        options.setComponentTemplateFile(component);
+        options.setStoryTemplateFile(story);
+        options.setSpecTemplateFile(spec);
+        options.setSassTemplateFile(scss);
+        options.setMarkdownTemplateFile(md);
     }
 }

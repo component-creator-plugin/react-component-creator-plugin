@@ -1,4 +1,4 @@
-package fabs.component.data;
+package fabs.react.component.data;
 
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;

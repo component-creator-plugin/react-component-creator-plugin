@@ -1,6 +1,6 @@
-package fabs.reducer.ui;
+package fabs.react.reducer.ui;
 
-import fabs.reducer.data.ReducerCreateOptions;
+import fabs.react.reducer.data.ReducerCreateOptions;
 import fabs.util.AbstractSettingsForm;
 
 import javax.swing.*;

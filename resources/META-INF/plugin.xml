@@ -68,44 +68,44 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <projectConfigurable
-                instance="fabs.component.settings.ComponentSettings"
+                instance="fabs.react.component.settings.ComponentSettings"
                 id="rcc.settings"
                 displayName="React Component Creator"
                 nonDefaultProject="true"/>
 
         <projectConfigurable
-                instance="fabs.reducer.settings.ReducerSettings"
+                instance="fabs.react.reducer.settings.ReducerSettings"
                 id="rcc.settings.redux"
                 displayName="Redux"
                 parentId="rcc.settings"
                 nonDefaultProject="true"/>
 
         <projectConfigurable
-                instance="fabs.component.settings.ComponentSettings"
+                instance="fabs.react.component.settings.ComponentSettings"
                 id="rcc.settings.component"
                 displayName="Component"
                 parentId="rcc.settings"
                 nonDefaultProject="true"/>
 
-        <projectService serviceInterface="fabs.reducer.data.ReducerSettingsState"
-                        serviceImplementation="fabs.reducer.data.ReducerSettingsState"/>
+        <projectService serviceInterface="fabs.react.reducer.data.ReducerSettingsState"
+                        serviceImplementation="fabs.react.reducer.data.ReducerSettingsState"/>
 
-        <projectService serviceInterface="fabs.component.data.ComponentSettingsState"
-                        serviceImplementation="fabs.component.data.ComponentSettingsState"/>
+        <projectService serviceInterface="fabs.react.component.data.ComponentSettingsState"
+                        serviceImplementation="fabs.react.component.data.ComponentSettingsState"/>
     </extensions>
 
     <actions>
         <group description="React" id="React">
             <separator/>
             <action id="ReactComponent.ComponentCreatorAction"
-                    class="fabs.component.action.ComponentCreatorAction"
+                    class="fabs.react.component.action.ComponentCreatorAction"
                     icon="/icons/component.png"
                     text="React component"
                     description="create new react component">
             </action>
 
             <action id="ReactComponent.ReducerCreatorAction"
-                    class="fabs.reducer.action.ReducerCreatorAction"
+                    class="fabs.react.reducer.action.ReducerCreatorAction"
                     icon="/icons/store.png"
                     text="Redux reducer"
                     description="create new redux reducer">

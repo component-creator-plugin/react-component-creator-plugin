@@ -23,4 +23,8 @@ public abstract class AbstractSettingsForm<T extends AbstractOptions> {
             input.setText(fileChooser.getSelectedFile().getAbsolutePath());
         }
     }
+
+    protected void onResetButtonClicked(ActionEvent e, JTextField input) {
+        input.setText(null);
+    }
 }

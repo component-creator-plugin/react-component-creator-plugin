@@ -1,9 +1,9 @@
-package fabs.component.settings;
+package fabs.react.component.settings;
 
 import com.intellij.openapi.project.Project;
-import fabs.component.data.ComponentCreateOptions;
-import fabs.component.ui.SettingsForm;
-import fabs.component.data.ComponentSettingsState;
+import fabs.react.component.data.ComponentCreateOptions;
+import fabs.react.component.ui.SettingsForm;
+import fabs.react.component.data.ComponentSettingsState;
 import fabs.util.AbstractSettingsForm;
 import fabs.util.AbstractSettingsUI;
 

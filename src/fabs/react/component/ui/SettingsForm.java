@@ -23,6 +23,10 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
     private JButton specTemplateResetBtn;
     private JButton scssTemplateReset;
     private JButton mdTemplateResetBtn;
+    private JCheckBox storybookCheckbox;
+    private JCheckBox specCheckBox;
+    private JCheckBox SCSSCheckBox;
+    private JCheckBox mdCheckBox;
 
     public SettingsForm(ComponentCreateOptions options) {
         super(options);
@@ -46,6 +50,11 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
         if (!options.isMDTemplateDefault()) {
             mdTemplateInput.setText(options.getMarkdownTemplateFile());
         }
+
+        storybookCheckbox.setSelected(options.isCreateStorybookDefaultChecked());
+        specCheckBox.setSelected(options.isCreateSpecDefaultChecked());
+        SCSSCheckBox.setSelected(options.isCreateScssDefaultChecked());
+        mdCheckBox.setSelected(options.isCreateMarkdownDefaultChecked());
 
         componentTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, componentTemplateInput));
         componentTemplateResetBtn.addActionListener(e -> onResetButtonClicked(e, componentTemplateInput));
@@ -71,11 +80,7 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
     @Override
     public boolean isDirty() {
         ComponentCreateOptions o = new ComponentCreateOptions();
-        o.setComponentTemplateFile(componentTemplateInput.getText());
-        o.setSassTemplateFile(scssTemplateInput.getText());
-        o.setSpecTemplateFile(specTemplateInput.getText());
-        o.setStoryTemplateFile(storyTemplateInput.getText());
-        o.setMarkdownTemplateFile(mdTemplateInput.getText());
+        applySettings(o);
         return !options.equals(o);
     }
 
@@ -91,5 +96,10 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
         options.setSpecTemplateFile(spec);
         options.setSassTemplateFile(scss);
         options.setMarkdownTemplateFile(md);
+
+        options.setCreateMarkdownDefaultChecked(mdCheckBox.isSelected());
+        options.setCreateSpecDefaultChecked(specCheckBox.isSelected());
+        options.setCreateScssDefaultChecked(SCSSCheckBox.isSelected());
+        options.setCreateStorybookDefaultChecked(storybookCheckbox.isSelected());
     }
 }

@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.faebeee.reactcomponentcreator</id>
     <name>React Component Creator</name>
-    <version>0.4.0</version>
+    <version>0.5.0</version>
     <vendor email="faebeee@gmail.com" url="http://fabs.io">Fabio Gianini</vendor>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
@@ -14,54 +14,67 @@
     <description>
         <![CDATA[
             <h1><a href="#react-component-creator" id="react-component-creator">react-component-creator</a></h1>
-            <ul>
-              <li>An Brainstorm Plugin to create a new react functional component with all additional files like
-                SCSS, Spec, Storybook.</li>
-              <li>Add Redux reducer module with actions, mutations, state and types.</li>
-              <li>Add custom templates to match your coding style and your needs.</li>
-            </ul>
-            <h1><a href="#custom-templates" id="custom-templates">Custom Templates</a></h1>
-            <p>If you are not happy with the predefined templates, you can choose your
-            own templates. The templates will be processed with mustache as templating.
-            All variables can also be used for the filenames.</p>
-            <p>Following variables are available</p>
-            <p><strong>Component</strong></p>
-            <table>
-              <thead>
-                <tr><th> variable </th><th> Description </th></tr>
-              </thead>
-              <tbody>
-                <tr><td> {{componentName}} </td><td> the inputted component name. Without any alterations </td></tr>
-                <tr><td> {{componentCamelcaseName}} </td><td> Camelcased input <code>my-component</code> becomes <code>MyComponent</code> </td></tr>
-              </tbody>
-            </table>
-            <p><strong>Reducer</strong></p>
-            <table>
-              <thead>
-                <tr><th> variable </th><th> Description </th></tr>
-              </thead>
-              <tbody>
-                <tr><td> {{actionFunctionName}} </td><td> Name of the function inside the <code>actions.ts</code> file </td></tr>
-                <tr><td> {{moduleName}} </td><td> Name of the folder </td></tr>
-                <tr><td> {{mutationType}} </td><td> String which will be used as type of the dispatch/mutation </td></tr>
-                <tr><td> {{moduleNamePascalCase}} </td><td> Pascalcased moduleName </td></tr>
-                <tr><td> {{stateName}} </td><td> Name for the state. <code>my-component</code> becomes <code>MyComponentState</code> </td></tr>
-                <tr><td> {{actionTypeName}} </td><td> Takes the input of <code>actionFunctionName</code> and capitalizes the first letter and appends <code>Action</code>. From <code>setData</code> becomes <code>SetDataAction</code> </td></tr>
-                <tr><td> {{actionTypesEnumName}} </td><td> Name used for the action types enum. actionTypesEnumName is the namespace where all <code>mutationType</code> actions are kept </td></tr>
-              </tbody>
-            </table>
+<p><img src="https://img.shields.io/jetbrains/plugin/d/13965-react-component-creator?style=for-the-badge" alt="Downloads" />
+<img src="https://img.shields.io/jetbrains/plugin/v/13965-react-component-creator?style=for-the-badge" alt="Version" />
+<img src="https://img.shields.io/jetbrains/plugin/r/rating/13965-react-component-creator?style=for-the-badge" alt="Rating" /></p>
+<ul>
+  <li>An Brainstorm Plugin to create a new react functional component with all additional files like
+    SCSS, Spec, Storybook.</li>
+  <li>Add Redux reducer module with actions, mutations, state and types.</li>
+  <li>Add custom templates to match your coding style and your needs.</li>
+</ul>
+<p><img src="https://github.com/faebeee/react-component-creator-plugin/blob/master/doc/settings.png?raw=true" alt="Settings" title="" />
+<img src="https://github.com/faebeee/react-component-creator-plugin/blob/master/doc/create_component.gif?raw=true" alt="Create component" title="" />
+<img src="https://github.com/faebeee/react-component-creator-plugin/blob/master/doc/create_reducer.gif?raw=true" alt="Create Reducer" title="" /></p>
+<h1><a href="#install" id="install">Install</a></h1>
+<p>Search for <code>React Component Creator</code> in the plugins settings. Or download the plugin from the <a href="https://github.com/faebeee/react-component-creator-plugin/releases">release site</a></p>
+<h1><a href="#custom-templates" id="custom-templates">Custom Templates</a></h1>
+<p>If you are not happy with the predefined templates, you can choose your
+own templates. The templates will be processed with mustache as templating.
+All variables can also be used for the filenames.</p>
+<p>Following variables are available</p>
+<p><strong>Component</strong></p>
+<table>
+  <thead>
+    <tr><th> variable </th><th> Description </th></tr>
+  </thead>
+  <tbody>
+    <tr><td> {{componentName}} </td><td> the inputted component name. Without any alterations </td></tr>
+    <tr><td> {{componentCamelcaseName}} </td><td> Camelcased input <code>my-component</code> becomes <code>MyComponent</code> </td></tr>
+  </tbody>
+</table>
+<p><strong>Reducer</strong></p>
+<table>
+  <thead>
+    <tr><th> variable </th><th> Description </th></tr>
+  </thead>
+  <tbody>
+    <tr><td> {{actionFunctionName}} </td><td> Name of the function inside the <code>actions.ts</code> file </td></tr>
+    <tr><td> {{moduleName}} </td><td> Name of the folder </td></tr>
+    <tr><td> {{mutationType}} </td><td> String which will be used as type of the dispatch/mutation </td></tr>
+    <tr><td> {{moduleNamePascalCase}} </td><td> Pascalcased moduleName </td></tr>
+    <tr><td> {{stateName}} </td><td> Name for the state. <code>my-component</code> becomes <code>MyComponentState</code> </td></tr>
+    <tr><td> {{actionTypeName}} </td><td> Takes the input of <code>actionFunctionName</code> and capitalizes the first letter and appends <code>Action</code>. From <code>setData</code> becomes <code>SetDataAction</code> </td></tr>
+    <tr><td> {{actionTypesEnumName}} </td><td> Name used for the action types enum. actionTypesEnumName is the namespace where all <code>mutationType</code> actions are kept </td></tr>
+  </tbody>
+</table>
+<h1><a href="#development" id="development">Development</a></h1>
+<p>Follow the <a href="./doc/DEVELOPMENT.md">Setup Instructions</a></p>
+<h1><a href="#icons" id="icons">Icons</a></h1>
+<p>Icons provided by <a href="https://www.iconfinder.com/justicon">https://www.iconfinder.com/justicon</a> via <a href="https://www.iconfinder.com">https://www.iconfinder.com</a></p>
         ]]>
     </description>
 
     <change-notes>
         <![CDATA[
-           <ul>
-              <li>v0.4.0 Add Customisable templates. Improve a lot of code. Update doc</li>
-              <li>v0.2.1 Export enum for action types</li>
-              <li>v0.2.1 Export enum for action types</li>
-              <li>v0.2.0 Add <code>Add Redux Reducer</code> Action</li>
-              <li>v0.1.0 Add <code>Add React Component</code> Action</li>
-            </ul>
+<ul>
+  <li>v0.5.0 Checkboxes checked by default can be configured in the settings</li>
+  <li>v0.4.0 Add Customisable templates. Improve a lot of code. Update doc</li>
+  <li>v0.2.1 Export enum for action types</li>
+  <li>v0.2.1 Export enum for action types</li>
+  <li>v0.2.0 Add <code>Add Redux Reducer</code> Action</li>
+  <li>v0.1.0 Add <code>Add React Component</code> Action</li>
+</ul>
         ]]>
     </change-notes>
 

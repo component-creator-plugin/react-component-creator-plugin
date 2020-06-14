@@ -33,6 +33,11 @@ public class CreateComponentForm extends AbstractDialog<ComponentCreateOptions> 
 
         // call onCancel() on ESCAPE
         contentPane.registerKeyboardAction(e -> onCancel(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+        storybookCheckBox.setSelected(options.isCreateStorybookDefaultChecked());
+        unitTestCheckBox.setSelected(options.isCreateSpecDefaultChecked());
+        SCSSCheckBox.setSelected(options.isCreateScssDefaultChecked());
+        markdownCheckBox.setSelected(options.isCreateMarkdownDefaultChecked());
     }
 
     @Override

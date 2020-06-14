@@ -28,6 +28,16 @@ public class ComponentCreateOptions extends AbstractOptions {
     private String storyTemplateFile = defaultStoryTemplateFile;
     private String markdownTemplateFile = defaultMarkdownTemplateFile;
 
+    private final String MD_CHECKBOX_KEY = "MD_CHECKBOX_KEY";
+    private final String STORY_CHECKBOX_KEY = "STORY_CHECKBOX_KEY";
+    private final String SCSS_CHECKBOX_KEY = "SCSS_CHECKBOX_KEY";
+    private final String SPEC_CHECKBOX_KEY = "SPEC_CHECKBOX_KEY";
+
+    private boolean isCreateStorybookDefaultChecked = false;
+    private boolean isCreateSpecDefaultChecked = false;
+    private boolean isCreateScssDefaultChecked = false;
+    private boolean isCreateMarkdownDefaultChecked = false;
+
     private Boolean isCreateSassFile = false;
     private Boolean isCreateSpecFile = false;
     private Boolean isCreateStoryFile = false;
@@ -43,6 +53,11 @@ public class ComponentCreateOptions extends AbstractOptions {
         element.setAttribute(SPEC_TEMPLATE_KEY, specTemplateFile);
         element.setAttribute(STORY_TEMPLATE_KEY, storyTemplateFile);
         element.setAttribute(MD_TEMPLATE_KEY, markdownTemplateFile);
+
+        element.setAttribute(MD_CHECKBOX_KEY, Boolean.toString(isCreateMarkdownDefaultChecked));
+        element.setAttribute(STORY_CHECKBOX_KEY, Boolean.toString(isCreateStorybookDefaultChecked));
+        element.setAttribute(SCSS_CHECKBOX_KEY, Boolean.toString(isCreateScssDefaultChecked));
+        element.setAttribute(SPEC_CHECKBOX_KEY, Boolean.toString(isCreateSpecDefaultChecked));
         return element;
     }
 
@@ -53,6 +68,11 @@ public class ComponentCreateOptions extends AbstractOptions {
         setSpecTemplateFile(element.getAttributeValue(SPEC_TEMPLATE_KEY));
         setStoryTemplateFile(element.getAttributeValue(STORY_TEMPLATE_KEY));
         setMarkdownTemplateFile(element.getAttributeValue(MD_TEMPLATE_KEY));
+
+        setCreateMarkdownDefaultChecked(Boolean.valueOf(element.getAttributeValue(MD_TEMPLATE_KEY)));
+        setCreateStorybookDefaultChecked(Boolean.valueOf(element.getAttributeValue(STORY_CHECKBOX_KEY)));
+        setCreateScssDefaultChecked(Boolean.valueOf(element.getAttributeValue(SCSS_CHECKBOX_KEY)));
+        setCreateSpecDefaultChecked(Boolean.valueOf(element.getAttributeValue(SPEC_CHECKBOX_KEY)));
     }
 
     @Override
@@ -192,12 +212,48 @@ public class ComponentCreateOptions extends AbstractOptions {
         return markdownTemplateFile;
     }
 
+    public boolean isCreateStorybookDefaultChecked() {
+        return isCreateStorybookDefaultChecked;
+    }
+
+    public boolean isCreateSpecDefaultChecked() {
+        return isCreateSpecDefaultChecked;
+    }
+
+    public boolean isCreateScssDefaultChecked() {
+        return isCreateScssDefaultChecked;
+    }
+
+    public boolean isCreateMarkdownDefaultChecked() {
+        return isCreateMarkdownDefaultChecked;
+    }
+
+    public void setCreateStorybookDefaultChecked(boolean createStorybookDefaultChecked) {
+        isCreateStorybookDefaultChecked = createStorybookDefaultChecked;
+    }
+
+    public void setCreateSpecDefaultChecked(boolean createSpecDefaultChecked) {
+        isCreateSpecDefaultChecked = createSpecDefaultChecked;
+    }
+
+    public void setCreateScssDefaultChecked(boolean createScssDefaultChecked) {
+        isCreateScssDefaultChecked = createScssDefaultChecked;
+    }
+
+    public void setCreateMarkdownDefaultChecked(boolean createMarkdownDefaultChecked) {
+        isCreateMarkdownDefaultChecked = createMarkdownDefaultChecked;
+    }
+
     public boolean equals(ComponentCreateOptions options) {
         return (options.getComponentTemplateFile().equals(componentTemplateFile)
                 && options.getStoryTemplateFile().equals(storyTemplateFile)
                 && options.getSpecTemplateFile().equals(specTemplateFile)
                 && options.getSassTemplateFile().equals(sassTemplateFile)
                 && options.getMarkdownTemplateFile().equals(markdownTemplateFile)
+                && options.isCreateMarkdownDefaultChecked() == isCreateMarkdownDefaultChecked
+                && options.isCreateScssDefaultChecked() == isCreateScssDefaultChecked
+                && options.isCreateSpecDefaultChecked() == isCreateSpecDefaultChecked
+                && options.isCreateStorybookDefaultChecked() == isCreateStorybookDefaultChecked
         );
     }
 }

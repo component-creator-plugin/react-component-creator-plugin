@@ -11,9 +11,9 @@ SCSS, Spec, Storybook.
 - Add custom templates to match your coding style and your needs.
 
 
-![Create Reducer](./doc/settings.png "")
-![Create component](./doc/create_component.gif "")
-![Create Reducer](./doc/create_reducer.gif "")
+![Settings](https://github.com/faebeee/react-component-creator-plugin/blob/master/doc/settings.png?raw=true "")
+![Create component](https://github.com/faebeee/react-component-creator-plugin/blob/master/doc/create_component.gif?raw=true "")
+![Create Reducer](https://github.com/faebeee/react-component-creator-plugin/blob/master/doc/create_reducer.gif?raw=true "")
 
 # Install
 Search for `React Component Creator` in the plugins settings. Or download the plugin from the [release site](https://github.com/faebeee/react-component-creator-plugin/releases)

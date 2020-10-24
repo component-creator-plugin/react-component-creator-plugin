@@ -1,10 +1,10 @@
-package fabs.react.reducer.action;
+package io.fabs.react.reducer.action;
 
 import com.intellij.openapi.project.Project;
-import fabs.react.reducer.data.ReducerSettingsState;
-import fabs.react.reducer.ui.CreateReducerForm;
-import fabs.util.AbstractCreatorAction;
-import fabs.util.AbstractDialog;
+import io.fabs.react.reducer.data.ReducerSettingsState;
+import io.fabs.react.reducer.ui.CreateReducerForm;
+import io.fabs.util.AbstractCreatorAction;
+import io.fabs.util.AbstractDialog;
 
 public class ReducerCreatorAction extends AbstractCreatorAction {
     @Override

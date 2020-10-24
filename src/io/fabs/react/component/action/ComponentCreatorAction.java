@@ -1,10 +1,10 @@
-package fabs.react.component.action;
+package io.fabs.react.component.action;
 
 import com.intellij.openapi.project.Project;
-import fabs.react.component.data.ComponentSettingsState;
-import fabs.react.component.ui.CreateComponentForm;
-import fabs.util.AbstractCreatorAction;
-import fabs.util.AbstractDialog;
+import io.fabs.react.component.data.ComponentSettingsState;
+import io.fabs.react.component.ui.CreateComponentForm;
+import io.fabs.util.AbstractCreatorAction;
+import io.fabs.util.AbstractDialog;
 
 public class ComponentCreatorAction extends AbstractCreatorAction {
     @Override

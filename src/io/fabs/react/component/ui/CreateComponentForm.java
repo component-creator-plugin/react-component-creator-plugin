@@ -1,7 +1,7 @@
-package fabs.react.component.ui;
+package io.fabs.react.component.ui;
 
-import fabs.react.component.data.ComponentCreateOptions;
-import fabs.util.AbstractDialog;
+import io.fabs.react.component.data.ComponentCreateOptions;
+import io.fabs.util.AbstractDialog;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -40,16 +40,6 @@ public class CreateComponentForm extends AbstractDialog<ComponentCreateOptions> 
         markdownCheckBox.setSelected(options.isCreateMarkdownDefaultChecked());
     }
 
-    @Override
-    protected void onOK() {
-        options.setComponentName(componentNameTextField.getText());
-        options.setCreateStoryFile(storybookCheckBox.isSelected());
-        options.setCreateSpecFile(unitTestCheckBox.isSelected());
-        options.setCreateSassFile(SCSSCheckBox.isSelected());
-        options.setCreateMDFile(markdownCheckBox.isSelected());
-        super.onOK();
-    }
-
     public String getComponentName() {
         return componentNameTextField.getText();
     }
@@ -57,5 +47,15 @@ public class CreateComponentForm extends AbstractDialog<ComponentCreateOptions> 
     @Override
     public String getDirectoryName() {
         return componentNameTextField.getText();
+    }
+
+    @Override
+    public ComponentCreateOptions setOptions(ComponentCreateOptions componentCreateOptions) {
+        options.setComponentName(componentNameTextField.getText());
+        options.setCreateStoryFile(storybookCheckBox.isSelected());
+        options.setCreateSpecFile(unitTestCheckBox.isSelected());
+        options.setCreateSassFile(SCSSCheckBox.isSelected());
+        options.setCreateMDFile(markdownCheckBox.isSelected());
+        return options;
     }
 }

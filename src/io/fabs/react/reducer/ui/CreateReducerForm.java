@@ -1,7 +1,7 @@
-package fabs.react.reducer.ui;
+package io.fabs.react.reducer.ui;
 
-import fabs.react.reducer.data.ReducerCreateOptions;
-import fabs.util.AbstractDialog;
+import io.fabs.react.reducer.data.ReducerCreateOptions;
+import io.fabs.util.AbstractDialog;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -11,9 +11,9 @@ import java.awt.event.WindowEvent;
 public class CreateReducerForm extends AbstractDialog<ReducerCreateOptions> {
 
     private JPanel contentPanel;
+    private JButton createButton;
     private JTextField moduleNameTextField;
     private JTextField actionNameTextField;
-    private JButton createButton;
     private JTextField mutationNametextField;
 
     public CreateReducerForm(ReducerCreateOptions options) {
@@ -43,10 +43,10 @@ public class CreateReducerForm extends AbstractDialog<ReducerCreateOptions> {
     }
 
     @Override
-    protected void onOK() {
+    public ReducerCreateOptions setOptions(ReducerCreateOptions reducerCreateOptions) {
         options.setActionFunctionName(actionNameTextField.getText());
         options.setModuleName(moduleNameTextField.getText());
         options.setMutationType(mutationNametextField.getText());
-        super.onOK();
+        return options;
     }
 }

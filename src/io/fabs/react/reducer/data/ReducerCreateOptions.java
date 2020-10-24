@@ -1,11 +1,11 @@
-package fabs.react.reducer.data;
+package io.fabs.react.reducer.data;
 
-import fabs.util.AbstractOptions;
-import fabs.util.StringFormatter;
+import io.fabs.util.AbstractOptions;
+import io.fabs.util.StringFormatter;
+import io.fabs.util.TemplateUtils;
 import org.jdom.Element;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -57,15 +57,12 @@ public class ReducerCreateOptions extends AbstractOptions {
     }
 
     @Override
-    public Map<String, String> getTemplateVariables() {
-        Map<String, String> templateModel = new HashMap<>();
+    public Map<String, Object> getTemplateVariables() {
+        Map<String, Object> templateModel = TemplateUtils.createVariableMap(moduleName);
 
         templateModel.put("actionFunctionName", actionFunctionName);
-        templateModel.put("moduleName", moduleName);
         templateModel.put("mutationType", mutationType);
 
-        templateModel.put("moduleNamePascalCase", StringFormatter.toCamelCase(moduleName));
-        templateModel.put("stateName", StringFormatter.toCamelCase(moduleName) + "State");
         templateModel.put("actionTypeName", StringFormatter.capitalizeFirst(actionFunctionName) + "Action");
         templateModel.put("actionTypesEnumName", StringFormatter.toDashCase(moduleName).toUpperCase() + "_ACTIONS");
 

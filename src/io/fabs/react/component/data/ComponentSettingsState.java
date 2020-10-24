@@ -1,10 +1,10 @@
-package fabs.react.component.data;
+package io.fabs.react.component.data;
 
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.project.Project;
-import fabs.util.AbstractPersistentState;
+import io.fabs.util.AbstractPersistentState;
 
 @State(
         name = "ComponentSettings",

@@ -1,7 +1,7 @@
-package fabs.react.component.ui;
+package io.fabs.react.component.ui;
 
-import fabs.react.component.data.ComponentCreateOptions;
-import fabs.util.AbstractSettingsForm;
+import io.fabs.react.component.data.ComponentCreateOptions;
+import io.fabs.util.AbstractSettingsForm;
 
 import javax.swing.*;
 
@@ -18,11 +18,6 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
     private JButton specTemplateBtn;
     private JButton scssTemplateBtn;
     private JButton mdTemplateBtn;
-    private JButton componentTemplateResetBtn;
-    private JButton storybookTemplateReset;
-    private JButton specTemplateResetBtn;
-    private JButton scssTemplateReset;
-    private JButton mdTemplateResetBtn;
     private JCheckBox storybookCheckbox;
     private JCheckBox specCheckBox;
     private JCheckBox SCSSCheckBox;
@@ -57,19 +52,14 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
         mdCheckBox.setSelected(options.isCreateMarkdownDefaultChecked());
 
         componentTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, componentTemplateInput));
-        componentTemplateResetBtn.addActionListener(e -> onResetButtonClicked(e, componentTemplateInput));
 
         storyTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, storyTemplateInput));
-        storybookTemplateReset.addActionListener(e -> onResetButtonClicked(e, storyTemplateInput));
 
         specTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, specTemplateInput));
-        specTemplateResetBtn.addActionListener(e -> onResetButtonClicked(e, specTemplateInput));
 
         scssTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, scssTemplateInput));
-        scssTemplateReset.addActionListener(e -> onResetButtonClicked(e, scssTemplateInput));
 
         mdTemplateBtn.addActionListener(e -> onBrowseButtonClicked(e, mdTemplateInput));
-        mdTemplateResetBtn.addActionListener(e -> onBrowseButtonClicked(e, mdTemplateInput));
     }
 
     @Override

@@ -1,11 +1,10 @@
-package fabs.react.component.data;
+package io.fabs.react.component.data;
 
-import fabs.util.AbstractOptions;
-import fabs.util.StringFormatter;
+import io.fabs.util.AbstractOptions;
+import io.fabs.util.TemplateUtils;
 import org.jdom.Element;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class ComponentCreateOptions extends AbstractOptions {
@@ -99,13 +98,8 @@ public class ComponentCreateOptions extends AbstractOptions {
     }
 
     @Override
-    public Map<String, String> getTemplateVariables() {
-        Map<String, String> templateModel = new HashMap<>();
-
-        templateModel.put("componentName", componentName);
-        templateModel.put("componentCamelcaseName", StringFormatter.toCamelCase(componentName));
-
-        return templateModel;
+    public Map<String, Object> getTemplateVariables() {
+        return TemplateUtils.createVariableMap(componentName);
     }
 
     public void setComponentTemplateFile(String componentTemplateFile) {

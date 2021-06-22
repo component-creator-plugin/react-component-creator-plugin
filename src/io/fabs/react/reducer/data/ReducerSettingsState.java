@@ -9,7 +9,7 @@ import io.fabs.util.settings.AbstractPersistentState;
 @State(
         name = "ReducerSettings",
         storages = {
-                @Storage("/rcc0.6.xml")
+                @Storage("/rcc.xml")
         }
 )
 public class ReducerSettingsState extends AbstractPersistentState<ReducerCreateOptions> {

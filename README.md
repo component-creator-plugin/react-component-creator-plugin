@@ -5,9 +5,7 @@
 ![Rating](https://img.shields.io/jetbrains/plugin/r/rating/13965-react-component-creator?style=for-the-badge)
 
 
-An Brainstorm Plugin to create a new react functional component with all additional files like
-SCSS, Spec, Storybook. Add Redux reducer module with actions, mutations, state and types. 
-Add custom templates to match your coding style and your needs.
+w
 
 
 ![Settings](https://github.com/component-creator-plugin/react-component-creator-plugin/blob/master/doc/settings.png?raw=true "")

@@ -14,7 +14,7 @@ public class CreateReducerForm extends AbstractDialog<ReducerCreateOptions> {
     private JButton createButton;
     private JTextField moduleNameTextField;
     private JTextField actionNameTextField;
-    private JTextField mutationNametextField;
+    private JTextField mutationNameTextField;
 
     public CreateReducerForm(ReducerCreateOptions options) {
         super(options);
@@ -46,7 +46,7 @@ public class CreateReducerForm extends AbstractDialog<ReducerCreateOptions> {
     public ReducerCreateOptions setOptions(ReducerCreateOptions reducerCreateOptions) {
         options.setActionFunctionName(actionNameTextField.getText());
         options.setModuleName(moduleNameTextField.getText());
-        options.setMutationType(mutationNametextField.getText());
+        options.setMutationType(mutationNameTextField.getText());
         return options;
     }
 }

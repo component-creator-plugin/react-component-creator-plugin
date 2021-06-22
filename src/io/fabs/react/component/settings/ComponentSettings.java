@@ -4,8 +4,8 @@ import com.intellij.openapi.project.Project;
 import io.fabs.react.component.data.ComponentCreateOptions;
 import io.fabs.react.component.ui.SettingsForm;
 import io.fabs.react.component.data.ComponentSettingsState;
-import io.fabs.util.AbstractSettingsForm;
-import io.fabs.util.AbstractSettingsUI;
+import io.fabs.util.settings.AbstractSettingsForm;
+import io.fabs.util.settings.AbstractSettingsUI;
 
 public class ComponentSettings extends AbstractSettingsUI<ComponentCreateOptions> {
 

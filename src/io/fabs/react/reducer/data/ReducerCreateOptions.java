@@ -16,10 +16,10 @@ public class ReducerCreateOptions extends AbstractOptions {
     private final static String INDEX_TEMPLATE = "INDEX_TEMPLATE";
     private final static String TYPES_TEMPLATE = "TYPES_TEMPLATE";
 
-    private String defaultActionTemplateFile = "templates/reducer/actions.ts.mustache";
-    private String defaultModuleIndexTemplateFile = "templates/reducer/index.ts.mustache";
-    private String defaultTypesTemplateFile = "templates/reducer/types.ts.mustache";
-    private String defaultActionTypesTemplateFile = "templates/reducer/action-types.ts.mustache";
+    private final String defaultActionTemplateFile = "/templates/reducer/actions.ts.mustache";
+    private final String defaultModuleIndexTemplateFile = "/templates/reducer/index.ts.mustache";
+    private final String defaultTypesTemplateFile = "/templates/reducer/types.ts.mustache";
+    private final String defaultActionTypesTemplateFile = "/templates/reducer/action-types.ts.mustache";
 
     private String actionTemplateFile = defaultActionTemplateFile;
     private String moduleIndexTemplateFile = defaultModuleIndexTemplateFile;
@@ -57,8 +57,8 @@ public class ReducerCreateOptions extends AbstractOptions {
     }
 
     @Override
-    public Map<String, Object> getTemplateVariables() {
-        Map<String, Object> templateModel = TemplateUtils.createVariableMap(moduleName);
+    public Map<String, String> getTemplateVariables() {
+        Map<String, String> templateModel = TemplateUtils.createVariableMap(moduleName);
 
         templateModel.put("actionFunctionName", actionFunctionName);
         templateModel.put("mutationType", mutationType);

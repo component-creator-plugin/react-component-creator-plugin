@@ -15,11 +15,11 @@ public class ComponentCreateOptions extends AbstractOptions {
     private final String STORY_TEMPLATE_KEY = "STORY_TEMPLATE_KEY";
     private final String MD_TEMPLATE_KEY = "MD_TEMPLATE_KEY";
 
-    private final String defaultComponentTemplateFile = "templates/component/{{componentName}}.tsx.mustache";
-    private final String defaultSassTemplateFile = "templates/component/_{{componentName}}.scss.mustache";
-    private final String defaultSpecTemplateFile = "templates/component/{{componentName}}.spec.tsx.mustache";
-    private final String defaultStoryTemplateFile = "templates/component/{{componentName}}.story.tsx.mustache";
-    private final String defaultMarkdownTemplateFile = "templates/component/{{componentName}}.md.mustache";
+    private final String defaultComponentTemplateFile = "/templates/component/{{componentName}}.tsx.mustache";
+    private final String defaultSassTemplateFile = "/templates/component/_{{componentName}}.scss.mustache";
+    private final String defaultSpecTemplateFile = "/templates/component/{{componentName}}.spec.tsx.mustache";
+    private final String defaultStoryTemplateFile = "/templates/component/{{componentName}}.story.tsx.mustache";
+    private final String defaultMarkdownTemplateFile = "/templates/component/{{componentName}}.md.mustache";
 
     private String componentTemplateFile = defaultComponentTemplateFile;
     private String sassTemplateFile = defaultSassTemplateFile;
@@ -68,10 +68,10 @@ public class ComponentCreateOptions extends AbstractOptions {
         setStoryTemplateFile(element.getAttributeValue(STORY_TEMPLATE_KEY));
         setMarkdownTemplateFile(element.getAttributeValue(MD_TEMPLATE_KEY));
 
-        setCreateMarkdownDefaultChecked(Boolean.valueOf(element.getAttributeValue(MD_TEMPLATE_KEY)));
-        setCreateStorybookDefaultChecked(Boolean.valueOf(element.getAttributeValue(STORY_CHECKBOX_KEY)));
-        setCreateScssDefaultChecked(Boolean.valueOf(element.getAttributeValue(SCSS_CHECKBOX_KEY)));
-        setCreateSpecDefaultChecked(Boolean.valueOf(element.getAttributeValue(SPEC_CHECKBOX_KEY)));
+        setCreateMarkdownDefaultChecked(Boolean.parseBoolean(element.getAttributeValue(MD_CHECKBOX_KEY)));
+        setCreateStorybookDefaultChecked(Boolean.parseBoolean(element.getAttributeValue(STORY_CHECKBOX_KEY)));
+        setCreateScssDefaultChecked(Boolean.parseBoolean(element.getAttributeValue(SCSS_CHECKBOX_KEY)));
+        setCreateSpecDefaultChecked(Boolean.parseBoolean(element.getAttributeValue(SPEC_CHECKBOX_KEY)));
     }
 
     @Override
@@ -98,7 +98,7 @@ public class ComponentCreateOptions extends AbstractOptions {
     }
 
     @Override
-    public Map<String, Object> getTemplateVariables() {
+    public Map<String, String> getTemplateVariables() {
         return TemplateUtils.createVariableMap(componentName);
     }
 

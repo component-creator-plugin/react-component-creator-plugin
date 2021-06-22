@@ -1,3 +1,4 @@
+- v1.0.0 Use component-creator-lib
 - v0.6.0 Use component-creator-lib
     - Fix windows paths
     - Update documentation

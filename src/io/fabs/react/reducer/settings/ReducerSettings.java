@@ -4,8 +4,8 @@ import com.intellij.openapi.project.Project;
 import io.fabs.react.reducer.data.ReducerCreateOptions;
 import io.fabs.react.reducer.data.ReducerSettingsState;
 import io.fabs.react.reducer.ui.SettingsForm;
-import io.fabs.util.AbstractSettingsForm;
-import io.fabs.util.AbstractSettingsUI;
+import io.fabs.util.settings.AbstractSettingsForm;
+import io.fabs.util.settings.AbstractSettingsUI;
 
 public class ReducerSettings extends AbstractSettingsUI<ReducerCreateOptions> {
     public ReducerSettings(Project project) {

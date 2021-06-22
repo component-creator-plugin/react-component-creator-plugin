@@ -1,7 +1,7 @@
 package io.fabs.react.component.ui;
 
 import io.fabs.react.component.data.ComponentCreateOptions;
-import io.fabs.util.AbstractSettingsForm;
+import io.fabs.util.settings.AbstractSettingsForm;
 
 import javax.swing.*;
 

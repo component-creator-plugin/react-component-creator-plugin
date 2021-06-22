@@ -4,12 +4,12 @@ import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.project.Project;
-import io.fabs.util.AbstractPersistentState;
+import io.fabs.util.settings.AbstractPersistentState;
 
 @State(
         name = "ReducerSettings",
         storages = {
-                @Storage("/rcc.xml")
+                @Storage("/rcc0.6.xml")
         }
 )
 public class ReducerSettingsState extends AbstractPersistentState<ReducerCreateOptions> {

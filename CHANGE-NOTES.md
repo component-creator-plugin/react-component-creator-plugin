@@ -1,4 +1,5 @@
-- v1.0.0 Use component-creator-lib
+- v1.0.1 Fix default templates for stories
+- v1.0.0 Major release. Fix bugs for windows
 - v0.6.0 Use component-creator-lib
     - Fix windows paths
     - Update documentation

@@ -18,7 +18,7 @@ public class ComponentCreateOptions extends AbstractOptions {
     private final String defaultComponentTemplateFile = "/templates/component/{{componentName}}.tsx.mustache";
     private final String defaultSassTemplateFile = "/templates/component/_{{componentName}}.scss.mustache";
     private final String defaultSpecTemplateFile = "/templates/component/{{componentName}}.spec.tsx.mustache";
-    private final String defaultStoryTemplateFile = "/templates/component/{{componentName}}.story.tsx.mustache";
+    private final String defaultStoryTemplateFile = "/templates/component/{{componentName}}.stories.tsx.mustache";
     private final String defaultMarkdownTemplateFile = "/templates/component/{{componentName}}.md.mustache";
 
     private String componentTemplateFile = defaultComponentTemplateFile;

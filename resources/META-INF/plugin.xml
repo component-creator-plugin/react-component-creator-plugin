@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.faebeee.reactcomponentcreator</id>
     <name>React Component Creator</name>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <vendor email="faebeee@gmail.com" url="http://fabs.io">Fabio Gianini</vendor>
 
     <!-- please see http://www.jetbrains.org/int6llij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
@@ -22,7 +22,9 @@ Add custom templates to match your coding style and your needs.
     <change-notes>
         <![CDATA[
 <ul>
-<li>v0.6.0 Use component-creator-lib
+<li>v1.0.1 Fix default templates for stories</li>
+<li>v1.0.0 Major release. Fix bugs for windows</li>
+<li>v0.6.0 Use component-creator-lib</li>
 <ul>
 <li>Fix windows paths</li>
 <li>Update documentation</li>
